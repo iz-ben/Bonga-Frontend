@@ -14,14 +14,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import About from 'containers/About/Loadable';
+import Share from 'containers/Share/Loadable';
+import Story from 'containers/Story/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Header from '../../components/Header/Loadable';
 
 export default function App() {
   return (
     <div>
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/share" component={Share} />
+        <Route exact path="/story" component={Story} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
