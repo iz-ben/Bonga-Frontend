@@ -19,7 +19,8 @@ import Share from 'containers/Share/Loadable';
 import Story from 'containers/Story/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from '../../components/Header/Loadable';
+import Header from 'components/Header/Loadable';
+import Footer from 'components/Footer';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route exact path="/story" component={Story} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
     </div>
   );
 }
