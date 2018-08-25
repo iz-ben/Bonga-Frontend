@@ -1,5 +1,5 @@
 # Use the docker image node:9.4
-FROM node:alpine
+FROM node:9.4
 # Into which the source will be copied inside the destination container.
 WORKDIR /app
 # It will copy the existing files to the `/app` directory.
