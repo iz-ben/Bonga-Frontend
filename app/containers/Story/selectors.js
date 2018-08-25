@@ -18,5 +18,20 @@ const selectStoryDomain = state => state.get('story', initialState);
 const makeSelectStory = () =>
   createSelector(selectStoryDomain, substate => substate.toJS());
 
+const makeSelectACtiveStory = ()=>
+  createSelector(makeSelectStory(), substate => substate.story);
+
+const makeSelectReplies = ()=>
+  createSelector(makeSelectStory(), substate => substate.replies);
+
+const makeSelectNetworkActive = ()=>
+  createSelector(makeSelectStory(), substate => substate.xhrActive);
+
+
 export default makeSelectStory;
-export { selectStoryDomain };
+export {
+  selectStoryDomain,
+  makeSelectACtiveStory,
+  makeSelectReplies,
+  makeSelectNetworkActive
+};

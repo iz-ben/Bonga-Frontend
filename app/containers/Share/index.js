@@ -10,22 +10,92 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import ReactPaginate from 'react-paginate';
+
+import ChevronLeft from "@material-ui/icons/ChevronLeft";
+import ChevronRight from "@material-ui/icons/ChevronRight";
+
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
+import StoryItem from 'components/StoryItem';
+import pageStyle from 'assets/jss/views/pageStyle';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectShare from './selectors';
+import makeSelectShare, {
+  makeSelectCurrentPage,
+  makeSelectEditorOpen,
+  makeSelectNetworkActive,
+  makeSelectPages,
+  makeSelectStories, makeSelectVisibleItems,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { getComments } from './actions';
+import Loading from 'components/Loading';
 
 /* eslint-disable react/prefer-stateless-function */
-export class Share extends React.Component {
+class Share extends React.Component {
+
+  handlePaginationChange = ({selected})=>{
+    //console.log(selected);
+    const page = ++selected;
+    this.props.dispatch(getComments(page));
+  };
+
+  componentDidMount()
+  {
+    const currentPage = this.props.current || 0;
+    this.props.dispatch(getComments( currentPage + 1));
+  }
   render() {
+    const { classes, stories, current, pages, editorOpen, ...rest } = this.props;
+    if(this.props.loading)
+    {
+      return <Loading/>;
+    }
     return (
       <div>
-        <Helmet>
+        <Helmet titleTemplate="%s - Bonga">
           <title>Share</title>
-          <meta name="description" content="Description of Share" />
+          <meta name="description" content="What is weighing on you?" />
         </Helmet>
+        <div className={classes.container}>
+          <GridContainer>
+            <GridItem  xs={12} sm={12} md={12}>
+              <div className={`story-wrapper`}>
+                <TransitionGroup className="todo-list">
+                  {stories.map(story=>(
+                    <CSSTransition
+                      key={story.id}
+                      timeout={500}
+                      classNames="fade"
+                    ><StoryItem {...story} /></CSSTransition>
+                  ))}
+
+                </TransitionGroup>
+
+              </div>
+            </GridItem>
+          </GridContainer>
+          <div className="pagination" id="react-paginate">
+            {this.props.pages > 1 ? <ReactPaginate previousLabel={<ChevronLeft/>}
+                                                   nextLabel={<ChevronRight/>}
+                                                   breakLabel={<a href="">...</a>}
+                                                   breakClassName={"break-me"}
+                                                   pageCount={this.props.pages}
+                                                   marginPagesDisplayed={2}
+                                                   pageRangeDisplayed={5}
+                                                   onPageChange={this.handlePaginationChange}
+                                                   subContainerClassName={"pages pagination"}
+                                                   forcePage = {current}
+                                                   activeClassName={"active"} />
+              :''
+            }
+          </div>
+        </div>
       </div>
     );
   }
@@ -33,10 +103,21 @@ export class Share extends React.Component {
 
 Share.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  stories:PropTypes.array,
+  editorOpen:PropTypes.bool,
+  loading:PropTypes.bool,
+  pages:PropTypes.number,
+  current:PropTypes.number
+
 };
 
 const mapStateToProps = createStructuredSelector({
   share: makeSelectShare(),
+  stories:makeSelectVisibleItems(),
+  editorOpen:makeSelectEditorOpen(),
+  loading:makeSelectNetworkActive(),
+  pages:makeSelectPages(),
+  current:makeSelectCurrentPage()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -57,4 +138,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(Share);
+)(withStyles(pageStyle)(Share));

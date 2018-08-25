@@ -5,14 +5,25 @@
  */
 
 import { fromJS } from 'immutable';
-import { DEFAULT_ACTION } from './constants';
+import { GET_STORY_SUCCESS_ACTION } from './constants';
+import { UPDATE_NETWORK_ACTIVITY_ACTION } from '../Share/constants';
 
-export const initialState = fromJS({});
+export const initialState = fromJS({
+  story:null,
+  replies:[],
+  editorOpen:false,
+  sorting:'ASC',
+  xhrActive:false
+});
 
 function storyReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case GET_STORY_SUCCESS_ACTION:
+      return state
+        .set('story', action.story)
+        .set('replies', action.story.replies);
+    case UPDATE_NETWORK_ACTIVITY_ACTION:
+      return state.set('xhrActive', action.active);
     default:
       return state;
   }

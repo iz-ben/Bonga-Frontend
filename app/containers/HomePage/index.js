@@ -10,16 +10,41 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+// @material-ui/core components
+import withStyles from '@material-ui/core/styles/withStyles';
+import { Link } from 'react-router-dom'
+
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
+import Button from 'components/CustomButtons/Button';
+import Parallax from 'components/Parallax/Parallax';
+import homePageStyle from 'assets/jss/views/homePageStyle';
 
 /* eslint-disable react/prefer-stateless-function */
-export default class HomePage extends React.PureComponent {
+class HomePage extends React.PureComponent {
   render() {
+    const { classes, ...rest } = this.props;
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <div className={classes.container}>
+          <GridContainer>
+            <GridItem xs={12} sm={12} md={12}>
+              <h4>Talk about whatever's weighing heavily on your mind here, anonymously.</h4>
+              <br />
+              <Button
+                color="info"
+                size="lg"
+                to="/share"
+                component={Link}
+              >
+                <i className="fas fa-play" />Start Here
+              </Button>
+            </GridItem>
+          </GridContainer>
+        </div>
+      </div>
     );
   }
 }
+
+export default withStyles(homePageStyle)(HomePage);
