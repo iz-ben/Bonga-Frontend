@@ -4,8 +4,13 @@
  *
  */
 
-import { GET_STORY_ACTION, GET_STORY_ERROR_ACTION, GET_STORY_SUCCESS_ACTION } from './constants';
-import { UPDATE_NETWORK_ACTIVITY_ACTION } from '../Share/constants';
+import {
+  GET_STORY_ACTION,
+  GET_STORY_ERROR_ACTION,
+  GET_STORY_SUCCESS_ACTION,
+  TYPE_TEXT_ACTION, UPDATE_NETWORK_ACTIVITY_ACTION,
+  UPDATE_RECAPTCHA_ACTION,
+} from './constants';
 
 export function getStory(id) {
   return {
@@ -35,3 +40,18 @@ export function updateNetworkActivity( active = false ) {
     active
   };
 }
+
+
+export const typeReplyText = ( content ) => {
+  return {
+    type: TYPE_TEXT_ACTION,
+    content
+  }
+};
+
+export const updateReplyRecaptcha = ( content ) => {
+  return {
+    type: UPDATE_RECAPTCHA_ACTION,
+    content
+  }
+};

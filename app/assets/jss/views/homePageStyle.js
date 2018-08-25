@@ -4,7 +4,7 @@ const homePageStyle = {
   container: {
     zIndex: "12",
     color: "#000",
-    marginTop:'200px',
+    marginTop:'10px',
     marginBottom:'50px',
     textAlign:'center',
     ...container

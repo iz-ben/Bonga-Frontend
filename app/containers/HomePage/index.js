@@ -10,15 +10,16 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-import { Link } from 'react-router-dom'
 
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from 'components/CustomButtons/Button';
-import Parallax from 'components/Parallax/Parallax';
 import homePageStyle from 'assets/jss/views/homePageStyle';
+import logo from 'images/logo-white-bg.png';
+import WordPool from 'components/WordPool/Loadable';
 
 /* eslint-disable react/prefer-stateless-function */
 class HomePage extends React.PureComponent {
@@ -29,6 +30,8 @@ class HomePage extends React.PureComponent {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
+              <div><img src={logo}/></div>
+              <WordPool/>
               <h4>Talk about whatever's weighing heavily on your mind here, anonymously.</h4>
               <br />
               <Button

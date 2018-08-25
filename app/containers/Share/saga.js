@@ -2,10 +2,15 @@
 
 // Individual exports for testing
 import { takeLatest,call, put } from 'redux-saga/effects';
-import { GET_COMMENTS_ACTION } from './constants';
+import { GET_COMMENTS_ACTION, SUBMIT_STORY_ACTION } from './constants';
 import request from 'utils/request';
 import { API_BASE } from 'utils/constants';
-import { commentsFetchedError, commentsFetchedSuccessfully, updateNetworkActivity } from './actions';
+import {
+  commentPostedSuccessfully,
+  commentsFetchedError,
+  commentsFetchedSuccessfully,
+  updateNetworkActivity,
+} from './actions';
 
 export function* fetchComments({page}) {
   //console.log(page);
@@ -31,6 +36,33 @@ export function* fetchComments({page}) {
   }
 }
 
+export function* sendStory( { content, recaptcha, replyTo }) {
+  //console.log(content, recaptcha, replyTo);
+  const headers = {
+    method: 'POST',
+    headers: {
+      //Authorization: `Bearer ${auth.token()}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      content,recaptcha, replyTo,
+    }),
+  };
+
+  try {
+    const req = yield call(request, `${API_BASE}/comments`, headers); //
+    yield put(commentPostedSuccessfully(req.data));
+    //console.log(req);
+  }catch(err){
+    console.log(err);
+  }
+
+}
+
 export default function* shareSaga() {
-  yield takeLatest(GET_COMMENTS_ACTION, fetchComments );
+  yield [
+    takeLatest(GET_COMMENTS_ACTION, fetchComments ),
+    takeLatest(SUBMIT_STORY_ACTION, sendStory )
+  ];
 }

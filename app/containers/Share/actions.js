@@ -5,17 +5,19 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  CLOSE_EDITOR_ACTION, DISPLAY_EDITOR_ACTION,
   GET_COMMENTS_ACTION,
   GET_COMMENTS_ERROR_ACTION,
-  GET_COMMENTS_SUCCESSFUL_ACTION, UPDATE_NETWORK_ACTIVITY_ACTION,
+  GET_COMMENTS_SUCCESSFUL_ACTION,
+  POST_COMMENT_SUCCESSFUL_ACTION,
+  RECAPTCHA_ERROR_ACTION,
+  SUBMIT_STORY_ACTION,
+  SUBMIT_STORY_VALIDATION_ERROR,
+  TYPE_TEXT_ACTION,
+  UPDATE_NETWORK_ACTIVITY_ACTION,
+  UPDATE_RECAPTCHA_ACTION,
 } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
 
 export function updateNetworkActivity( active = false ) {
   return {
@@ -31,6 +33,12 @@ export function getComments(page = 0) {
   };
 }
 
+export function commentPostedSuccessfully( comment ) {
+  return {
+    type: POST_COMMENT_SUCCESSFUL_ACTION,
+    comment
+  };
+}
 
 
 export function commentsFetchedSuccessfully( comments, meta ) {
@@ -47,3 +55,56 @@ export function commentsFetchedError( message ) {
     message
   };
 }
+
+export const submitStory = ( content, recaptcha, replyTo = null ) => {
+
+  //console.log(typeof text, text)
+  if(content==='')
+  {
+    return {
+      type:SUBMIT_STORY_VALIDATION_ERROR
+    }
+  }
+  //console.log(typeof recaptcha, recaptcha)
+
+  if (recaptcha==='')
+  {
+    return {
+      type:RECAPTCHA_ERROR_ACTION
+    }
+  }
+  //console.log(recatpcha)
+  return {
+    type: SUBMIT_STORY_ACTION,
+    content,
+    recaptcha,
+    replyTo
+  }
+};
+
+export const typeText = ( content ) => {
+  return {
+    type: TYPE_TEXT_ACTION,
+    content
+  }
+};
+
+export const updateRecaptcha = ( content ) => {
+  return {
+    type: UPDATE_RECAPTCHA_ACTION,
+    content
+  }
+};
+
+export const closeEditor = () => {
+  return {
+    type: CLOSE_EDITOR_ACTION
+  }
+};
+
+
+export const displayEditor = () => {
+  return {
+    type: DISPLAY_EDITOR_ACTION
+  }
+};

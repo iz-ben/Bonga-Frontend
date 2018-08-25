@@ -24,13 +24,24 @@ const storyItemStyle = {
   },
   footerRight:{
     color: '#848484',
-    fontSize: '12px'
+    fontSize: '12px',
+    '& a':{
+      color: '#848484 !important',
+      fontSize: '12px',
+    }
   },
   footerLeft:{
 
   },
   icon:{
-    fontSize:'16px'
+    fontSize:'14px'
+  },
+  storyContent:{
+    fontSize:'16px',
+    color: '#313131',
+    '& p':{
+      fontSize:'16px',
+    }
   }
 };
 

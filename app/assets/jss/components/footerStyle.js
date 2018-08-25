@@ -43,7 +43,11 @@ const footerStyle = {
       color: '#FFFFFF',
     },
   },
-  container,
+  container:{
+    ...container,
+    //display:'flex',
+    justifyContent: 'space-between'
+  },
   list: {
     marginBottom: '0',
     padding: '0',

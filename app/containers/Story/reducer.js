@@ -5,15 +5,21 @@
  */
 
 import { fromJS } from 'immutable';
-import { GET_STORY_SUCCESS_ACTION } from './constants';
-import { UPDATE_NETWORK_ACTIVITY_ACTION } from '../Share/constants';
+import {
+  GET_STORY_SUCCESS_ACTION,
+  TYPE_TEXT_ACTION,
+  UPDATE_NETWORK_ACTIVITY_ACTION,
+  UPDATE_RECAPTCHA_ACTION,
+} from './constants';
 
 export const initialState = fromJS({
   story:null,
   replies:[],
   editorOpen:false,
   sorting:'ASC',
-  xhrActive:false
+  xhrActive:false,
+  editorContent:'',
+  recaptcha:null,
 });
 
 function storyReducer(state = initialState, action) {
@@ -24,6 +30,10 @@ function storyReducer(state = initialState, action) {
         .set('replies', action.story.replies);
     case UPDATE_NETWORK_ACTIVITY_ACTION:
       return state.set('xhrActive', action.active);
+    case TYPE_TEXT_ACTION:
+      return state.set('editorContent', action.content);
+    case UPDATE_RECAPTCHA_ACTION:
+      return state.set('recaptcha', action.content);
     default:
       return state;
   }

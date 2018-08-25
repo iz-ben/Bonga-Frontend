@@ -19,6 +19,7 @@ import pageStyle from 'assets/jss/views/pageStyle';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import StoryItem from 'components/StoryItem';
+import Editor from 'components/Editor/Loadable';
 import reducer from './reducer';
 import saga from './saga';
 import { makeSelectComment } from '../Share/selectors';
@@ -61,7 +62,7 @@ export class Story extends React.Component {
                     )):null
                   }
                 </div>
-
+                { story ? <Editor replyTo={story.id}/> : null}
               </div>
             </GridItem>
           </GridContainer>

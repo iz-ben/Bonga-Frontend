@@ -6,3 +6,13 @@ export const API_BASE =
     ? 'http://192.168.99.100:8000/api/v1'
     : 'https://api.bonga.or.ke/v1';
 export const RECAPTCHA_KEY = '6Ldv6UoUAAAAAPA5yh6gyuCgIIrDNIYbItP4M7Pn';
+
+export const SLOGANS = [
+  'Bonga',
+  'Ongea',
+  'Funguka',
+  'Sema Kitu',
+  'Share',
+  'Unwind',
+  'Vent'
+];

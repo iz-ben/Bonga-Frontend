@@ -35,6 +35,7 @@ import reducer from './reducer';
 import saga from './saga';
 import { getComments } from './actions';
 import Loading from 'components/Loading';
+import Editor from 'components/Editor/Loadable';
 
 /* eslint-disable react/prefer-stateless-function */
 class Share extends React.Component {
@@ -48,7 +49,7 @@ class Share extends React.Component {
   componentDidMount()
   {
     const currentPage = this.props.current || 0;
-    this.props.dispatch(getComments( currentPage + 1));
+    this.props.dispatch(getComments( currentPage ));
   }
   render() {
     const { classes, stories, current, pages, editorOpen, ...rest } = this.props;
@@ -65,6 +66,7 @@ class Share extends React.Component {
         <div className={classes.container}>
           <GridContainer>
             <GridItem  xs={12} sm={12} md={12}>
+              <Editor/>
               <div className={`story-wrapper`}>
                 <TransitionGroup className="todo-list">
                   {stories.map(story=>(

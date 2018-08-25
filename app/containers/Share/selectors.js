@@ -36,6 +36,15 @@ const makeSelectNetworkActive = ()=>
 const makeSelectCurrentPage = ()=>
   createSelector(makeSelectShare(),  substate => substate.currentPage);
 
+const makeSelectEditorContent = ()=>
+  createSelector(makeSelectShare(),  substate => substate.editorContent);
+
+const makeSelectRecaptcha = ()=>
+  createSelector(makeSelectShare(),  substate => substate.recaptcha);
+
+const makeSelectEditorActive = ()=>
+  createSelector(makeSelectShare(),  substate => substate.editorActive);
+
 const makeSelectComment = (id)=>
   createSelector(makeSelectShare(),  substate => substate.stories.find(story=>story.id===id));
 
@@ -48,5 +57,8 @@ export {
   makeSelectNetworkActive,
   makeSelectComment,
   makeSelectVisibleItems,
-  makeSelectCurrentPage
+  makeSelectCurrentPage,
+  makeSelectEditorContent,
+  makeSelectRecaptcha,
+  makeSelectEditorActive
 };
