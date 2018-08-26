@@ -15,22 +15,22 @@ import { makeSelectLocation } from 'containers/App/selectors';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 /* eslint-disable react/prefer-stateless-function */
 class Header extends React.Component {
-
-  toggleLogoVisibility = ()=>{
-    const {location} = this.props;
-    return location.pathname !== '/' ? <CSSTransition
-      timeout={500}
-      classNames="fade"
-    ><Link to="/"><img src={darkLogo}/></Link></CSSTransition> : null;
+  toggleLogoVisibility = () => {
+    const { location } = this.props;
+    return location.pathname !== '/' ? (
+      <CSSTransition timeout={500} classNames="fade">
+        <Link to="/">
+          <img src={darkLogo} />
+        </Link>
+      </CSSTransition>
+    ) : null;
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
-      <div style={{minHeight:'150px', textAlign:'center'}}>
-        <TransitionGroup>
-          {this.toggleLogoVisibility()}
-        </TransitionGroup>
+      <div style={{ minHeight: '150px', textAlign: 'center' }}>
+        <TransitionGroup>{this.toggleLogoVisibility()}</TransitionGroup>
       </div>
     );
   }
@@ -39,7 +39,7 @@ class Header extends React.Component {
 Header.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
-  location:makeSelectLocation()
+  location: makeSelectLocation(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -53,6 +53,4 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default compose(
-  withConnect,
-)(Header);
+export default compose(withConnect)(Header);
