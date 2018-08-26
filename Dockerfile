@@ -6,6 +6,8 @@ WORKDIR /app
 COPY . /app
 # Run npm install
 RUN npm install
+#build production
+RUN npm run build
 # Start the app.
 CMD npm run start:prod
 # Expose the port of the app thats running in the container.
