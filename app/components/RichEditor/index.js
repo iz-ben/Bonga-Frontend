@@ -73,8 +73,6 @@ class RichEditor extends React.Component {
         });
       }
     });
-
-    //this.editor.setContent(this.props.editorContent);
   }
 
   /**
