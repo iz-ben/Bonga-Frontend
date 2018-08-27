@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "capitaldigital/bonga:v1",
+    "Name": "capitaldigital/bonga",
     "Update": "true"
   },
   "Ports": [
