@@ -27,7 +27,10 @@ const footerStyle = {
     display: 'flex',
     zIndex: '2',
     position: 'relative',
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#f5f5f5',
+    '& > a':{
+      color:'#ccc'
+    }
   },
   copyright:{
     fontSize: '14px',
