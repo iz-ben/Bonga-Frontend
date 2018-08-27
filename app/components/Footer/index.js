@@ -5,15 +5,15 @@
  */
 
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 // nodejs library that concatenates classes
-import classNames from "classnames";
-import { List, ListItem, withStyles } from "@material-ui/core";
+import classNames from 'classnames';
+import { List, ListItem, withStyles } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
 // @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
+import Favorite from '@material-ui/icons/Favorite';
 
-import footerStyle from "assets/jss/components/footerStyle";
+import footerStyle from 'assets/jss/components/footerStyle';
 
 /* eslint-disable react/prefer-stateless-function */
 class Footer extends React.Component {
@@ -21,11 +21,11 @@ class Footer extends React.Component {
     const { classes, whiteFont } = this.props;
     const footerClasses = classNames({
       [classes.footer]: true,
-      [classes.footerWhiteFont]: whiteFont
+      [classes.footerWhiteFont]: whiteFont,
     });
     const aClasses = classNames({
       [classes.a]: true,
-      [classes.footerWhiteFont]: whiteFont
+      [classes.footerWhiteFont]: whiteFont,
     });
     return (
       <footer className={footerClasses}>
@@ -33,40 +33,24 @@ class Footer extends React.Component {
           <div className={classes.left}>
             <List className={classes.list}>
               <ListItem className={classes.inlineBlock}>
-                <Link
-                  to="/share"
-                  className={classes.block}
-                >
+                <Link to="/share" className={classes.block}>
                   Open up
                 </Link>
               </ListItem>
+              <ListItem className={classes.inlineBlock}>|</ListItem>
               <ListItem className={classes.inlineBlock}>
-                |
-              </ListItem>
-              <ListItem className={classes.inlineBlock}>
-                <Link
-                  to="/about"
-                  className={classes.block}
-                >
+                <Link to="/about" className={classes.block}>
                   What is Bonga?
                 </Link>
               </ListItem>
-              <ListItem className={classes.inlineBlock}>
-                |
-              </ListItem>
-              <ListItem className={classes.inlineBlock}>
-                <Link
-                  to="/about"
-                  className={classes.block}
-                >
-                  Register to offer help
-                </Link>
-              </ListItem>
+              <ListItem className={classes.inlineBlock}>|</ListItem>
             </List>
           </div>
-          <div className={classes.right, classes.copyright}>
-            &copy; {1900 + new Date().getYear()} {" "}
-            <Link to="/" className={aClasses}>Bonga</Link>{" "}
+          <div className={(classes.right, classes.copyright)}>
+            &copy; {1900 + new Date().getYear()}{' '}
+            <Link to="/" className={aClasses}>
+              Bonga
+            </Link>{' '}
             is a Capital Group Initiative
           </div>
         </div>
@@ -77,7 +61,7 @@ class Footer extends React.Component {
 
 Footer.propTypes = {
   classes: PropTypes.object.isRequired,
-  whiteFont: PropTypes.bool
+  whiteFont: PropTypes.bool,
 };
 
 export default withStyles(footerStyle)(Footer);
