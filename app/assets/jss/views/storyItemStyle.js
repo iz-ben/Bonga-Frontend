@@ -2,7 +2,7 @@ import { container, title } from "assets/jss/material-kit-react";
 import cardStyle from 'assets/jss/components/cardStyle'
 
 
-const storyItemStyle = {
+const storyItemStyle = theme => ({
   ...cardStyle,
   card:{
     borderRadius: '0 !important',
@@ -15,20 +15,36 @@ const storyItemStyle = {
     },
   },
   cardFooter: {
-    padding: '0.9375rem 1.875rem 0',
-    justifyContent: 'space-between'
+    [theme.breakpoints.up('sm')]:{
+      padding: '0.9375rem 1.875rem 0',
+      justifyContent: 'space-between'
+    }
   },
   button:{
     marginBottom:0,
     borderRadius: 0,
   },
   footerRight:{
+    [theme.breakpoints.up('sm')]:{
+      textAlign:'right',
+      display:'flex',
+    },
+    [theme.breakpoints.down('sm')]:{
+      '& span':{
+        display:'block'
+      }
+    },
     color: '#848484',
     fontSize: '12px',
     '& a':{
       color: '#848484 !important',
       fontSize: '12px',
-    }
+    },
+    flex:1,
+    lineHeight:'16px',
+    position:'relative',
+    height:'100%',
+    alignItems: 'center'
   },
   footerLeft:{
 
@@ -42,7 +58,12 @@ const storyItemStyle = {
     '& p':{
       fontSize:'16px',
     }
+  },
+  publishedDate:{
+    [theme.breakpoints.down('sm')]:{
+      display:'none!important'
+    }
   }
-};
+});
 
 export default storyItemStyle;

@@ -16,6 +16,9 @@ const editorStyle = {
     padding: '0.9375rem',
     justifyContent: 'space-between'
   },
+  recaptcha:{
+    justifyContent: 'flex-start'
+  }
 };
 
 export default editorStyle;

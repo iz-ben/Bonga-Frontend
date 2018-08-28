@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ReCAPTCHA from 'react-google-recaptcha';
 import editorStyle from 'assets/jss/views/editorStyle';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 import Card from 'components/Card/Card';
 import CardBody from 'components/Card/CardBody';
 import CardFooter from 'components/Card/CardFooter';
@@ -29,7 +31,7 @@ import {
 } from 'containers/Story/selectors';
 import { updateReplyRecaptcha } from 'containers/Story/actions';
 import { RECAPTCHA_KEY } from 'utils/constants';
-import { submitReply } from '../../containers/Story/actions';
+import { submitReply } from 'containers/Story/actions';
 
 /* eslint-disable react/prefer-stateless-function */
 class Editor extends React.Component {
@@ -60,24 +62,31 @@ class Editor extends React.Component {
             <RichEditor id="rich-editor" replyTo={replyTo} />
           </CardBody>
           <CardFooter classes={{ cardFooter: classes.cardFooter }}>
-            <div>
-              <Button
-                disabled={!editorContent.length || !recaptcha}
-                onClick={this.handleSubmitComment}
-              >
-                {replyTo ? `Reply` : `Bonga`}
-              </Button>
-              <Button simple color="info" onClick={this.handleHideForm}>
-                Cancel
-              </Button>
-            </div>
-            <div>
-              <ReCAPTCHA
-                sitekey={RECAPTCHA_KEY}
-                onChange={value => this.handleRecaptchaChange(value)}
-                onExpired={() => this.handleRecaptchaChange(null)}
-                size="normal"
-              />
+            <div style={{flexGrow:1}}>
+              <GridContainer direction="row-reverse" justify="space-between">
+                <GridItem sm={6}>
+                  <div className={classes.recaptcha}>
+                    <ReCAPTCHA
+                      sitekey={RECAPTCHA_KEY}
+                      onChange={value => this.handleRecaptchaChange(value)}
+                      onExpired={() => this.handleRecaptchaChange(null)}
+                      size="normal"
+                    />
+                  </div>
+                </GridItem>
+                <GridItem sm={6}>
+                  <Button
+                    disabled={!editorContent.length || !recaptcha}
+                    onClick={this.handleSubmitComment}
+                  >
+                    {replyTo ? `Reply` : `Bonga`}
+                  </Button>
+                  <Button simple color="info" onClick={this.handleHideForm}>
+                    Cancel
+                  </Button>
+                </GridItem>
+
+              </GridContainer>
             </div>
           </CardFooter>
         </Card>

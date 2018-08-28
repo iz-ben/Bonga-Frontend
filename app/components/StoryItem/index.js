@@ -17,6 +17,8 @@ import Card from 'components/Card/Card';
 import CardBody from 'components/Card/CardBody';
 import CardFooter from 'components/Card/CardFooter';
 import Button from 'components/CustomButtons/Button';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
 /* eslint-disable react/prefer-stateless-function */
 class StoryItem extends React.Component {
@@ -40,14 +42,22 @@ class StoryItem extends React.Component {
           </div>
         </CardBody>
         <CardFooter classes={{cardFooter:classes.cardFooter}}>
-          <div className={classes.footerLeft}>
-            {
-              !singleView ? <Button component={Link} to={`/${this.props.slug}`} classes={{button:classes.button}} color="info">Reply</Button>:null
-            }
-          </div>
-          <div className={classes.footerRight}>
-            { replies }
-            <Schedule classes={{root:classes.icon}}/> Published <TimeAgo date={this.props.posted}/>
+          <div style={{flexGrow:1}}>
+            <GridContainer container direction="row-reverse" justify="space-between">
+              <GridItem xs={6}>
+                <div className={classes.footerRight}>
+                  <span>{ replies } </span>
+                  <Schedule classes={{root:classes.icon}}/> <span className={classes.publishedDate}>Published</span> <TimeAgo date={this.props.posted}/>
+                </div>
+              </GridItem>
+              <GridItem xs={6}>
+                <div className={classes.footerLeft}>
+                  {
+                    !singleView ? <Button component={Link} to={`/${this.props.slug}`} classes={{button:classes.button}} color="info">Reply</Button>:null
+                  }
+                </div>
+              </GridItem>
+            </GridContainer>
           </div>
         </CardFooter>
       </Card>
