@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Helmet } from 'react-helmet';
+import ReactGA from 'react-ga';
 import Slide from "@material-ui/core/Slide";
 import withStyles from '@material-ui/core/styles/withStyles';
 import IconButton from "@material-ui/core/IconButton";
@@ -39,6 +40,7 @@ import Warning from "components/Typography/Warning";
 import SnackbarContent from "components/Snackbar/SnackbarContent";
 import pageStyle from 'assets/jss/views/pageStyle';
 import { displayModal, hideModal, submitContactForm, updateField } from './actions';
+import { trackView } from 'utils/analyticsUtil';
 
 
 function Transition(props) {
@@ -66,8 +68,14 @@ class About extends React.Component {
     this.props.dispatch(submitContactForm(name, phone, email, comment));
   };
 
+
+
+  componentDidMount(){
+    trackView(this.props.location);
+  }
+
   render() {
-    const { classes, modal, message, ...rest } = this.props;
+    const { classes, modal, message, location } = this.props;
     const {name, email, phone, comment} = this.props.errors;
     return (
       <div>

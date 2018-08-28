@@ -36,6 +36,7 @@ import saga from './saga';
 import { getComments } from './actions';
 import Loading from 'components/Loading';
 import Editor from 'components/Editor/Loadable';
+import { trackView } from 'utils/analyticsUtil';
 
 /* eslint-disable react/prefer-stateless-function */
 class Share extends React.Component {
@@ -50,6 +51,7 @@ class Share extends React.Component {
   {
     const currentPage = this.props.current || 0;
     this.props.dispatch(getComments( currentPage ));
+    trackView(this.props.location);
   }
   render() {
     const { classes, stories, current, pages, editorOpen, ...rest } = this.props;

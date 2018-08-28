@@ -25,12 +25,14 @@ import saga from './saga';
 import { makeSelectComment } from '../Share/selectors';
 import { getStory } from './actions';
 import { makeSelectACtiveStory, makeSelectNetworkActive, makeSelectReplies } from './selectors';
+import { trackView } from 'utils/analyticsUtil';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Story extends React.Component {
   componentDidMount()
   {
     this.props.dispatch(getStory(this.props.match.params.id))
+    trackView(this.props.location);
   }
   render() {
     const { classes, story, replies, ...rest } = this.props;

@@ -13,6 +13,7 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import About from 'containers/About/Loadable';
 import Share from 'containers/Share/Loadable';
@@ -21,19 +22,30 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from 'components/Footer';
+import { initAnalytics } from 'utils/analyticsUtil';
+//
 
-export default function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/share" component={Share} />
-        <Route exact path="/thread/:id" component={Story} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+
+class App extends React.Component{
+  componentDidMount(){
+    initAnalytics();
+  }
+  render(){
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/share" component={Share} />
+          <Route exact path="/thread/:id" component={Story} />
+          <Route component={NotFoundPage} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
+
+
+export default App;

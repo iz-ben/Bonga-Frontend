@@ -20,9 +20,13 @@ import Button from 'components/CustomButtons/Button';
 import homePageStyle from 'assets/jss/views/homePageStyle';
 import logo from 'images/logo-white-bg.png';
 import WordPool from 'components/WordPool/Loadable';
+import { trackView } from 'utils/analyticsUtil';
 
 /* eslint-disable react/prefer-stateless-function */
 class HomePage extends React.PureComponent {
+  componentDidMount(){
+    trackView(this.props.location);
+  }
   render() {
     const { classes, ...rest } = this.props;
     return (
