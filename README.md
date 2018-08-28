@@ -1,4 +1,6 @@
-#BONGA
+![alt text](https://github.com/iz-ben/Bonga-Frontend/raw/master/app/images/logo.png "Logo Title Text 1")
+
+## BONGA
 
 Bonga is a mental wellness campaign that seeks to provide people with a platform where they can open up and share thoughts about the various issues that affect different generations.
 
