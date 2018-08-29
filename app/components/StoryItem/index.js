@@ -53,9 +53,9 @@ class StoryItem extends React.Component {
             >
               <GridItem xs={6}>
                 <div className={classes.footerRight}>
-                  <span>{replies}{' '} </span>
+                  <span>{replies} </span>
                   <Schedule classes={{ root: classes.icon }} />{' '}
-                  <span className={classes.publishedDate}>Published {' '}</span>
+                  <span className={classes.publishedDate}>Published </span>
                   <TimeAgo date={this.props.posted} />
                 </div>
               </GridItem>
@@ -82,13 +82,13 @@ class StoryItem extends React.Component {
 }
 
 StoryItem.propTypes = {
-  slug:PropTypes.string,
-  posted:PropTypes.object,
-  content:PropTypes.string,
-  replies_count:PropTypes.number,
-  isReply:PropTypes.bool,
-  singleView:PropTypes.bool
-
+  slug: PropTypes.string,
+  posted: PropTypes.object,
+  classes: PropTypes.object,
+  content: PropTypes.string,
+  replies_count: PropTypes.number,
+  isReply: PropTypes.bool,
+  singleView: PropTypes.bool,
 };
 
 export default withStyles(storyItemStyle)(StoryItem);
