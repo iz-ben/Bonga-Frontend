@@ -18,20 +18,22 @@ import CardBody from 'components/Card/CardBody';
 import CardFooter from 'components/Card/CardFooter';
 import Button from 'components/CustomButtons/Button';
 import RichEditor from 'components/RichEditor/Loadable';
-import { makeSelectEditorContent } from 'containers/Share/selectors';
 import {
   makeSelectEditorActive,
   makeSelectRecaptcha,
+  makeSelectEditorContent,
 } from 'containers/Share/selectors';
-import { submitStory } from 'containers/Share/actions';
-import { closeEditor, updateRecaptcha } from 'containers/Share/actions';
+import {
+  closeEditor,
+  updateRecaptcha,
+  submitStory,
+} from 'containers/Share/actions';
 import {
   makeSelectReplyEditorContent,
   makeSelectReplyRecaptcha,
 } from 'containers/Story/selectors';
-import { updateReplyRecaptcha } from 'containers/Story/actions';
+import { updateReplyRecaptcha, submitReply } from 'containers/Story/actions';
 import { RECAPTCHA_KEY } from 'utils/constants';
-import { submitReply } from 'containers/Story/actions';
 
 /* eslint-disable react/prefer-stateless-function */
 class Editor extends React.Component {
@@ -62,7 +64,7 @@ class Editor extends React.Component {
             <RichEditor id="rich-editor" replyTo={replyTo} />
           </CardBody>
           <CardFooter classes={{ cardFooter: classes.cardFooter }}>
-            <div style={{flexGrow:1}}>
+            <div style={{ flexGrow: 1 }}>
               <GridContainer direction="row-reverse" justify="space-between">
                 <GridItem sm={6}>
                   <div className={classes.recaptcha}>
@@ -85,7 +87,6 @@ class Editor extends React.Component {
                     Cancel
                   </Button>
                 </GridItem>
-
               </GridContainer>
             </div>
           </CardFooter>
@@ -99,8 +100,9 @@ Editor.propTypes = {
   dispatch: PropTypes.func.isRequired,
   editorContent: PropTypes.string,
   recaptcha: PropTypes.string,
-  editorActive: PropTypes.bool,
+  // editorActive: PropTypes.bool,
   replyTo: PropTypes.string,
+  classes: PropTypes.object,
 };
 
 const mapStateToProps = (state, props) =>
