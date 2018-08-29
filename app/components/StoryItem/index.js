@@ -32,7 +32,7 @@ class StoryItem extends React.Component {
       return !singleView ? (
         <Link to={`/${slug}`}>{replies_count} replies.</Link>
       ) : (
-        `${replies_count} replies.`
+        `${replies_count} replies. `
       );
     };
     const replies = repliesCount();
@@ -53,9 +53,9 @@ class StoryItem extends React.Component {
             >
               <GridItem xs={6}>
                 <div className={classes.footerRight}>
-                  <span>{replies} </span>
-                  <Schedule classes={{ root: classes.icon }} />{' '}
-                  <span className={classes.publishedDate}>Published </span>
+                  <span>{replies}{' '} </span>&nbsp;
+                  <Schedule classes={{ root: classes.icon }} />&nbsp;
+                  <span className={classes.publishedDate}>Published&nbsp; </span>
                   <TimeAgo date={this.props.posted} />
                 </div>
               </GridItem>
