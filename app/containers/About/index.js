@@ -89,8 +89,7 @@ class About extends React.Component {
               <h2 className={classes.title}>Bonga</h2>
               <h4>
                 Bonga is an initiative aimed at getting people to open up about their mental well-being.
-                This is a safe space where you can share your feelings anonymously without fear of judgement and empathize with others going through
-                mental conditions like depression, anxiety disorder and bipolar disorder.
+                This is a safe space where you can share your feelings anonymously without fear of judgement and empathize with others going through stress and mental conditions like depression, anxiety disorder and bipolar disorder.
               </h4>
               <br />
               <Button
