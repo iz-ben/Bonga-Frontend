@@ -43,7 +43,6 @@ class Footer extends React.Component {
                   What is Bonga?
                 </Link>
               </ListItem>
-              <ListItem className={classes.inlineBlock}>|</ListItem>
             </List>
           </div>
           <div className={(classes.right, classes.copyright)}>
