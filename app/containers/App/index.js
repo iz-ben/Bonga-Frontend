@@ -38,6 +38,7 @@ class App extends React.Component{
           <Route exact path="/" component={HomePage} />
           <Route exact path="/about" component={About} />
           <Route exact path="/share" component={Share} />
+          <Route exact path="/tag/:tag" component={Share} />
           <Route exact path="/thread/:id" component={Story} />
           <Route component={NotFoundPage} />
         </Switch>
