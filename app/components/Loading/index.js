@@ -8,9 +8,8 @@ import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
-import Card from 'components/Card/Card';
-import CardBody from 'components/Card/CardBody';
 import pageStyle from 'assets/jss/views/pageStyle';
+import WordPool from 'components/WordPool';
 
 /* eslint-disable react/prefer-stateless-function */
 class Loading extends React.Component {
@@ -20,9 +19,7 @@ class Loading extends React.Component {
       <div className={classes.container}>
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
-            <Card>
-              <CardBody>loading....</CardBody>
-            </Card>
+            <WordPool wordPool={['Loading']}/>
           </GridItem>
         </GridContainer>
       </div>
