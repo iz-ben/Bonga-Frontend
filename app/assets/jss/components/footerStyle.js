@@ -37,7 +37,7 @@ const footerStyle = {
     padding: '0.9375rem',
   },
   a: {
-    color: primaryColor,
+    color: '#42c7f4',
     textDecoration: 'none',
     backgroundColor: 'transparent',
   },
