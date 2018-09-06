@@ -25,12 +25,11 @@ import Footer from 'components/Footer';
 import { initAnalytics } from 'utils/analyticsUtil';
 //
 
-
-class App extends React.Component{
-  componentDidMount(){
+class App extends React.Component {
+  componentDidMount() {
     initAnalytics();
   }
-  render(){
+  render() {
     return (
       <div>
         <Header />
@@ -47,6 +46,5 @@ class App extends React.Component{
     );
   }
 }
-
 
 export default App;

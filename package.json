@@ -54,7 +54,10 @@
     ]
   },
   "linters": {
-    "*.json": ["prettier --write","git add --force"]
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
   },
   "pre-commit": "lint:staged",
   "babel": {
@@ -163,6 +166,7 @@
     "lodash": "4.17.10",
     "minimist": "1.2.0",
     "prop-types": "15.6.1",
+    "query-string": "^6.1.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-ga": "^2.5.3",
@@ -185,6 +189,7 @@
     "sanitize.css": "4.1.0",
     "styled-components": "3.3.2",
     "tinymce": "^4.8.2",
+    "twitter-text": "^2.0.4",
     "warning": "4.0.1",
     "whatwg-fetch": "2.0.4"
   },

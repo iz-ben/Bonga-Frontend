@@ -44,8 +44,8 @@ function shareReducer(state = initialState, action) {
         .set('stories', removeDuplicates([...stories, ...action.comments], 'id'))
         .set('visibleItems', removeDuplicates([...action.comments], 'id'))
         .set('pages', Math.ceil(action.meta.total/action.meta.per_page))
-        .set('from', action.comments[action.comments.length-1].time)
-        .set('to', action.comments[0].time)
+        .set('from', action.comments.length ? action.comments[action.comments.length-1].time:0)
+        .set('to', action.comments.length ? action.comments[0].time: 0)
         .set('currentPage', action.meta.current_page - 1);
     case UPDATE_NETWORK_ACTIVITY_ACTION:
       return state.set('xhrActive', action.active);

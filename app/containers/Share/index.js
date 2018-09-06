@@ -43,12 +43,26 @@ class Share extends React.Component {
   handlePaginationChange = ({ selected }) => {
     // console.log(selected);
     const page = selected + 1;
-    this.props.dispatch(getComments(page));
+    const {tag} = this.props.match.params;
+    this.props.dispatch(getComments(page, tag));
   };
+
+  componentWillReceiveProps(nextProps)
+  {
+    if(nextProps.match.params.tag !== this.props.match.params.tag)
+    {
+      const currentPage = this.props.current || 0;
+      const {tag} = nextProps.match.params;
+      this.props.dispatch(getComments(currentPage, tag));
+      trackView(this.props.location);
+    }
+    return true;
+  }
 
   componentDidMount() {
     const currentPage = this.props.current || 0;
-    this.props.dispatch(getComments(currentPage));
+    const {tag} = this.props.match.params;
+    this.props.dispatch(getComments(currentPage, tag));
     trackView(this.props.location);
   }
   render() {

@@ -5,13 +5,13 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import {TimelineLite, TweenMax, Back, Power2, SlowMo} from 'gsap';
-import SplitText from 'utils/SplitText';
 import withStyles from '@material-ui/core/styles/withStyles';
 import wordPoolStyle from 'assets/jss/views/wordPoolStyle';
 import { SLOGANS } from 'utils/constants';
+import SplitText from 'utils/SplitText';
 /* eslint-disable react/prefer-stateless-function */
 class WordPool extends React.Component {
 
@@ -43,12 +43,11 @@ class WordPool extends React.Component {
 
   changeSlogan = ()=>
   {
-    const wordPool = SLOGANS;
+    const wordPool = this.props.wordPool || SLOGANS;
     const word = Math.floor((Math.random() * (wordPool.length)));
     const slogan = wordPool[word];
-    //console.log(wordPool,slogan, this.state);
     this.setState({slogan:slogan});
-  }
+  };
 
   getSlogan = ()=>{
     const { slogan } = this.state;
@@ -81,6 +80,8 @@ class WordPool extends React.Component {
   }
 }
 
-WordPool.propTypes = {};
+WordPool.propTypes = {
+  wordPool:PropTypes.array
+};
 
 export default withStyles(wordPoolStyle)(WordPool);

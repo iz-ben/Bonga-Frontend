@@ -19,7 +19,7 @@ class Loading extends React.Component {
       <div className={classes.container}>
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
-            <WordPool wordPool={['Loading']}/>
+            <WordPool wordPool={['Loading']} />
           </GridItem>
         </GridContainer>
       </div>
@@ -29,4 +29,4 @@ class Loading extends React.Component {
 
 Loading.propTypes = {};
 
-export default withStyles(pageStyle)( Loading );
+export default withStyles(pageStyle)(Loading);

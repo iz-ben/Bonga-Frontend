@@ -11,6 +11,7 @@ import Parser from 'html-react-parser';
 import Schedule from '@material-ui/icons/Schedule';
 import TimeAgo from 'react-timeago';
 import { Link } from 'react-router-dom';
+import twitter from 'twitter-text';
 
 import storyItemStyle from 'assets/jss/views/storyItemStyle';
 import Card from 'components/Card/Card';
@@ -19,6 +20,7 @@ import CardFooter from 'components/Card/CardFooter';
 import Button from 'components/CustomButtons/Button';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
+import { getHashtagBase } from 'utils/hashtagUtil';
 
 /* eslint-disable react/prefer-stateless-function */
 class StoryItem extends React.Component {
@@ -41,7 +43,7 @@ class StoryItem extends React.Component {
       <Card classes={{ card: classes.card }}>
         <CardBody>
           <div className={classes.storyContent}>
-            {Parser(this.props.content)}
+            { Parser( twitter.autoLinkHashtags(this.props.content, {hashtagUrlBase:getHashtagBase()}))}
           </div>
         </CardBody>
         <CardFooter classes={{ cardFooter: classes.cardFooter }}>
@@ -83,7 +85,7 @@ class StoryItem extends React.Component {
 
 StoryItem.propTypes = {
   slug: PropTypes.string,
-  posted: PropTypes.object,
+  posted: PropTypes.string,
   classes: PropTypes.object,
   content: PropTypes.string,
   replies_count: PropTypes.number,

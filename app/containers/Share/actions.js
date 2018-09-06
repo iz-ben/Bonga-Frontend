@@ -5,7 +5,8 @@
  */
 
 import {
-  CLOSE_EDITOR_ACTION, DISPLAY_EDITOR_ACTION,
+  CLOSE_EDITOR_ACTION,
+  DISPLAY_EDITOR_ACTION,
   GET_COMMENTS_ACTION,
   GET_COMMENTS_ERROR_ACTION,
   GET_COMMENTS_SUCCESSFUL_ACTION,
@@ -18,93 +19,80 @@ import {
   UPDATE_RECAPTCHA_ACTION,
 } from './constants';
 
-
-export function updateNetworkActivity( active = false ) {
+export function updateNetworkActivity(active = false) {
   return {
     type: UPDATE_NETWORK_ACTIVITY_ACTION,
-    active
+    active,
   };
 }
 
-export function getComments(page = 0) {
+export function getComments(page = 0, tag = null) {
   return {
     type: GET_COMMENTS_ACTION,
-    page
+    page,
+    tag,
   };
 }
 
-export function commentPostedSuccessfully( comment ) {
+export function commentPostedSuccessfully(comment) {
   return {
     type: POST_COMMENT_SUCCESSFUL_ACTION,
-    comment
+    comment,
   };
 }
 
-
-export function commentsFetchedSuccessfully( comments, meta ) {
+export function commentsFetchedSuccessfully(comments, meta) {
   return {
     type: GET_COMMENTS_SUCCESSFUL_ACTION,
     comments,
-    meta
+    meta,
   };
 }
 
-export function commentsFetchedError( message ) {
+export function commentsFetchedError(message) {
   return {
     type: GET_COMMENTS_ERROR_ACTION,
-    message
+    message,
   };
 }
 
-export const submitStory = ( content, recaptcha, replyTo = null ) => {
-
-  //console.log(typeof text, text)
-  if(content==='')
-  {
+export const submitStory = (content, recaptcha, replyTo = null) => {
+  // console.log(typeof text, text)
+  if (content === '') {
     return {
-      type:SUBMIT_STORY_VALIDATION_ERROR
-    }
+      type: SUBMIT_STORY_VALIDATION_ERROR,
+    };
   }
-  //console.log(typeof recaptcha, recaptcha)
+  // console.log(typeof recaptcha, recaptcha)
 
-  if (recaptcha==='')
-  {
+  if (recaptcha === '') {
     return {
-      type:RECAPTCHA_ERROR_ACTION
-    }
+      type: RECAPTCHA_ERROR_ACTION,
+    };
   }
-  //console.log(recatpcha)
+  // console.log(recatpcha)
   return {
     type: SUBMIT_STORY_ACTION,
     content,
     recaptcha,
-    replyTo
-  }
+    replyTo,
+  };
 };
 
-export const typeText = ( content ) => {
-  return {
-    type: TYPE_TEXT_ACTION,
-    content
-  }
-};
+export const typeText = content => ({
+  type: TYPE_TEXT_ACTION,
+  content,
+});
 
-export const updateRecaptcha = ( content ) => {
-  return {
-    type: UPDATE_RECAPTCHA_ACTION,
-    content
-  }
-};
+export const updateRecaptcha = content => ({
+  type: UPDATE_RECAPTCHA_ACTION,
+  content,
+});
 
-export const closeEditor = () => {
-  return {
-    type: CLOSE_EDITOR_ACTION
-  }
-};
+export const closeEditor = () => ({
+  type: CLOSE_EDITOR_ACTION,
+});
 
-
-export const displayEditor = () => {
-  return {
-    type: DISPLAY_EDITOR_ACTION
-  }
-};
+export const displayEditor = () => ({
+  type: DISPLAY_EDITOR_ACTION,
+});
