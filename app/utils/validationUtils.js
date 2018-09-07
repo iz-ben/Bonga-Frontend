@@ -23,11 +23,12 @@ export const validate = (value, validation) => {
       return isPhoneNumber(value);
     case REQUIRED_VALIDATION:
       return value.trim().length > 0;
+    default:
+      return true;
   }
 };
 
 export const handleValidation = (value, validations) =>
   validations
     .map(validation => validate(value, validation))
-    .find(valid => valid === false) === false
-);
+    .find(valid => valid === false) === false;
