@@ -8,7 +8,8 @@ export const API_BASE =
 
 export const LOCALHOST_KEY = '6LdL2G4UAAAAAKwn2ce0zQ_PrO7ffu9kBwV9Rccu';
 export const SERVER_KEY = '6Ldv6UoUAAAAAPA5yh6gyuCgIIrDNIYbItP4M7Pn';
-export const RECAPTCHA_KEY = process.env.NODE_ENV !== 'production' ? LOCALHOST_KEY : SERVER_KEY;
+export const RECAPTCHA_KEY =
+  process.env.NODE_ENV !== 'production' ? LOCALHOST_KEY : SERVER_KEY;
 
 export const SLOGANS = [
   'Bonga',
@@ -17,10 +18,11 @@ export const SLOGANS = [
   'Sema Kitu',
   'Share',
   'Unwind',
-  'Vent'
+  'Vent',
 ];
 
-export const DEFAULT_AVATAR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACah' +
+export const DEFAULT_AVATAR =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACah' +
   'l6sAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG2YAABzjgAA+swAAIT6AAB5gQAA/RMAADBtAAASKQ0eJk4A' +
   'AAMAUExURevr7Jydn5manJucnuPj5JiZm9vb3PT09MvLzMLCw5GSlPr6+qeoqdXV1tHR0rW1trW2uKusrbi4urO0tLq6vK' +
   'iqq7e4uLW2tqGipLm6ury8vr6+vr+/wLu8vM7OztDQ0cjJytjY2dTU1aipqqqrrMXGxqanqKmqq6Wmp9LT062usKSlprS0ta' +

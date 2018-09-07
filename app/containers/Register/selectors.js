@@ -44,5 +44,5 @@ export {
   makeSelectName,
   makeSelectAvatar,
   makeSelectProfession,
-  makeSelectValidations
+  makeSelectValidations,
 };

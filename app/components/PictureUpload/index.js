@@ -13,8 +13,7 @@ import { DEFAULT_AVATAR } from '../../utils/constants';
 // import styled from 'styled-components';
 
 class PictureUpload extends React.Component {
-
-  handleFileChange = event =>{
+  handleFileChange = event => {
     const { target } = event;
     const { files } = target;
 
@@ -22,8 +21,8 @@ class PictureUpload extends React.Component {
       const reader = new FileReader();
 
       reader.onload = event => {
-        //console.log(event.target.result);
-        const callback = this.props.fileSelect || function(){};
+        // console.log(event.target.result);
+        const callback = this.props.fileSelect || function() {};
         this.props.fileSelect(event.target.result);
       };
 
@@ -46,7 +45,10 @@ class PictureUpload extends React.Component {
             style={{ visibility: 'hidden' }}
           />
           <div className={classes.uploaderWrapper}>
-            <div className={classes.container} style={{backgroundImage:`url(${preview})`}}>
+            <div
+              className={classes.container}
+              style={{ backgroundImage: `url(${preview})` }}
+            >
               &nbsp;
             </div>
           </div>
@@ -58,8 +60,8 @@ class PictureUpload extends React.Component {
 
 PictureUpload.propTypes = {
   classes: PropTypes.object.isRequired,
-  src:PropTypes.string,
-  fileSelect: PropTypes.func
+  src: PropTypes.string,
+  fileSelect: PropTypes.func,
 };
 
 export default withStyles(pictureUploadStyle)(PictureUpload);
