@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Helmet } from 'react-helmet';
-import ReactGA from 'react-ga';
 import Slide from "@material-ui/core/Slide";
 import withStyles from '@material-ui/core/styles/withStyles';
 import IconButton from "@material-ui/core/IconButton";
@@ -75,7 +74,7 @@ class About extends React.Component {
   }
 
   render() {
-    const { classes, modal, message, location } = this.props;
+    const { classes, modal, message } = this.props;
     const {name, email, phone, comment} = this.props.errors;
     return (
       <div>
@@ -97,7 +96,7 @@ class About extends React.Component {
                 size="sm"
                 onClick={this.handleOpenModal}
               >
-                <i className="fas fa-play" />Register to offer help
+                Register to offer help
               </Button>
             </GridItem>
           </GridContainer>
