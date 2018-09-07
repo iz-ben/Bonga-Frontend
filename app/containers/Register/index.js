@@ -161,6 +161,13 @@ export class Register extends React.Component {
                 </Button>
               </div>
             </GridItem>
+            <GridItem xs={12} sm={12} md={12}>
+              <div className={classes.typo}>
+                <p> Once you register successfully we will contact you and provide you with the login credentials you will use to respond to the posts on Bonga
+                </p>
+                <p>The image you upload will appear next to your name and profession on your posts</p>
+              </div>
+            </GridItem>
           </GridContainer>
         </div>
       </div>

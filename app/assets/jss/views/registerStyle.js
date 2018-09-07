@@ -1,7 +1,4 @@
 import { container, title } from 'assets/jss/material-kit-react';
-import modalStyle from 'assets/jss/modalStyle';
-import tooltipsStyle from 'assets/jss/tooltipsStyle';
-import popoverStyles from 'assets/jss/popoverStyles';
 
 const registerStyle = {
   container: {
@@ -27,7 +24,6 @@ const registerStyle = {
     height: '17px',
     marginRight: '4px',
   },
-  ...modalStyle,
   subtitle: {
     fontSize: '1.313rem',
     maxWidth: '500px',
@@ -54,11 +50,11 @@ const registerStyle = {
     paddingLeft: '0',
     textAlign: 'center',
   },
-  replies: {
-    paddingLeft: '50px',
-  },
-  ...tooltipsStyle,
-  ...popoverStyles,
+  typo:{
+    fontWeight: '300',
+    fontFamily:'Roboto',
+    padding:'10px 0'
+  }
 };
 
 export default registerStyle;

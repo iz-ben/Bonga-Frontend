@@ -44,7 +44,7 @@ class HomePage extends React.PureComponent {
                 to="/share"
                 component={Link}
               >
-                <i className="fas fa-play" />Start Here
+                Start Here
               </Button>
             </GridItem>
           </GridContainer>
