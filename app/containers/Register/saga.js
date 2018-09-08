@@ -5,6 +5,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { API_BASE } from 'utils/constants';
 import request from 'utils/request';
 import { SUBMIT_REGISTRATION_ACTION } from './constants';
+import { registrationSubmittedSuccessfully, setRegistrationMessage } from './actions';
 
 export function* sendToServer({ data }) {
   const headers = {
@@ -18,6 +19,18 @@ export function* sendToServer({ data }) {
     },
   };
   console.log(headers);
+  try{
+    const req = yield call(request, `${API_BASE}/register`, headers);
+    yield put(registrationSubmittedSuccessfully({
+      type:'success',
+      message:req.message
+    }));
+  }catch (e) {
+    yield put( setRegistrationMessage({
+      type:'error',
+      message:'Something went wrong'
+    }))
+  }
 }
 
 export default function* registerSaga() {

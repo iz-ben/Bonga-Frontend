@@ -5,6 +5,8 @@
  */
 
 import {
+  REGISTRATION_MESSAGE_ACTION,
+  REGISTRATION_SUCCESSFUL_ACTION,
   SUBMIT_REGISTRATION_ACTION,
   UPDATE_FIELD_ACTION,
   UPDATE_FIELD_VALIDATION_ACTION,
@@ -31,4 +33,20 @@ export function submitRegistrationForm(data) {
     type: SUBMIT_REGISTRATION_ACTION,
     data,
   };
+}
+
+export function registrationSubmittedSuccessfully( message )
+{
+  return {
+    type:REGISTRATION_SUCCESSFUL_ACTION,
+    message
+  }
+}
+
+export function setRegistrationMessage( message )
+{
+  return {
+    type:REGISTRATION_MESSAGE_ACTION,
+    message
+  }
 }

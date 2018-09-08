@@ -5,7 +5,7 @@ const registerStyle = {
     zIndex: '12',
     color: '#000',
     margin: '20px auto',
-    maxWidth: '600px !important',
+    maxWidth: '680px !important',
     ...container,
   },
   title: {
@@ -50,11 +50,14 @@ const registerStyle = {
     paddingLeft: '0',
     textAlign: 'center',
   },
-  typo:{
+  typo: {
     fontWeight: '300',
-    fontFamily:'Roboto',
-    padding:'10px 0'
-  }
+    fontFamily: 'Roboto',
+    padding: '10px 0',
+    '& p':{
+      fontSize:'12px'
+    }
+  },
 };
 
 export default registerStyle;

@@ -36,6 +36,12 @@ const makeSelectAvatar = () =>
 const makeSelectValidations = () =>
   createSelector(makeSelectRegister(), substate => substate.validation);
 
+const makeSelectMessage = () =>
+  createSelector(makeSelectRegister(), substate => substate.message);
+
+const makeSelectMessageType = () =>
+  createSelector(makeSelectRegister(), substate => substate.messageType);
+
 export default makeSelectRegister;
 export {
   selectRegisterDomain,
@@ -45,4 +51,6 @@ export {
   makeSelectAvatar,
   makeSelectProfession,
   makeSelectValidations,
+  makeSelectMessage,
+  makeSelectMessageType,
 };

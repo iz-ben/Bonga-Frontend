@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Helmet } from 'react-helmet';
@@ -88,15 +89,17 @@ class About extends React.Component {
           <GridContainer>
             <GridItem xs={12} sm={12} md={8}>
               <h2 className={classes.title}>Bonga</h2>
-              <h4>
-                Bonga is an initiative aimed at getting people to open up about
+              <p>
+                Bonga is an initiative to get people to open up and be more honest about
                 their mental well-being. This is a safe space where you can
-                share your feelings anonymously without fear of judgement and
+                share your feelings anonymously without fear of judgement, and
                 empathize with others going through stress and mental conditions
                 like depression, anxiety disorder and bipolar disorder.
-              </h4>
+              </p>
+              <p>This is not a final solution, and when possible please seek <b>professional</b> counselling.</p>
+              <p>We are working with our partners, volunteers and professionals to provide a way to have them respond directly to comments posted on Bonga.</p>
               <br />
-              <Button color="info" size="sm" onClick={this.handleOpenModal}>
+              <Button component={Link} color="info" size="sm" to='/register'>
                 Register to offer help
               </Button>
             </GridItem>

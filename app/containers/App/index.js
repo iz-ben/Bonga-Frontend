@@ -21,6 +21,7 @@ import Story from 'containers/Story/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Register from 'containers/Register/Loadable';
+import Partners from 'containers/Partners/Loadable';
 import Header from 'components/Header/Loadable';
 import Footer from 'components/Footer';
 import { initAnalytics } from 'utils/analyticsUtil';
@@ -39,6 +40,7 @@ class App extends React.Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/share" component={Share} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/partners" component={Partners} />
           <Route exact path="/tag/:tag" component={Share} />
           <Route exact path="/thread/:id" component={Story} />
           <Route component={NotFoundPage} />
