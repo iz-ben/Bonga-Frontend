@@ -18,7 +18,7 @@ export function* sendToServer({ data }) {
       'Content-Type': 'application/json',
     },
   };
-  console.log(headers);
+  //console.log(headers);
   try{
     const req = yield call(request, `${API_BASE}/register`, headers);
     yield put(registrationSubmittedSuccessfully({

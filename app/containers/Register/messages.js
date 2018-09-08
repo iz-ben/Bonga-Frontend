@@ -9,6 +9,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   profileSaved: {
     id: 'app.containers.Register.header',
-    defaultMessage: 'Profile save successfully',
+    defaultMessage: 'Profile saved successfully',
   },
 });
