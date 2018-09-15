@@ -70,11 +70,11 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new WebpackPwaManifest({
-      name: 'React Boilerplate',
-      short_name: 'React BP',
-      description: 'My React Boilerplate-based project!',
+      name: 'Bonga',
+      short_name: 'Bonga',
+      description: 'Open up',
       background_color: '#fafafa',
-      theme_color: '#b1624d',
+      theme_color: '#41c7f4',
       icons: [
         {
           src: path.resolve('app/images/icon-512x512.png'),

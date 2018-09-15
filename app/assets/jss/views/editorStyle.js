@@ -17,6 +17,11 @@ const editorStyle = {
   },
   recaptcha: {
     justifyContent: 'flex-start',
+    maxWidth: '100%',
+    '& > div': {
+      transform:'scale(0.86)',
+      transformOrigin:'0 0'
+    }
   },
 };
 
