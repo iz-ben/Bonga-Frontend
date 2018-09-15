@@ -5,12 +5,14 @@
  */
 
 import {
-  CONTACT_FORM_RECEIVED_ACTION, CONTACT_FORM_REMOVE_MESSAGE_ACTION,
+  CONTACT_FORM_RECEIVED_ACTION,
+  CONTACT_FORM_REMOVE_MESSAGE_ACTION,
   DEFAULT_ACTION,
   DISPLAY_MODAL_ACTION,
   HIDE_MODAL_ACTION,
   SUBMIT_FORM_ACTION,
-  UPDATE_FIELD_ACTION, VALIDATION_ERRORS_ACTION,
+  UPDATE_FIELD_ACTION,
+  VALIDATION_ERRORS_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -35,7 +37,7 @@ export function updateField(name, value) {
   return {
     type: UPDATE_FIELD_ACTION,
     name,
-    value
+    value,
   };
 }
 
@@ -45,28 +47,27 @@ export function submitContactForm(name, phone, email, comment) {
     name,
     phone,
     email,
-    comment
+    comment,
   };
 }
 
 export function contactFormSentSuccessFully(message) {
   return {
-    type:CONTACT_FORM_RECEIVED_ACTION,
-    message
-  }
+    type: CONTACT_FORM_RECEIVED_ACTION,
+    message,
+  };
 }
 
 export function removeMessage() {
   return {
-    type:CONTACT_FORM_REMOVE_MESSAGE_ACTION,
-    message
-  }
+    type: CONTACT_FORM_REMOVE_MESSAGE_ACTION,
+    message,
+  };
 }
-
 
 export function validationErrors(errors) {
   return {
     type: VALIDATION_ERRORS_ACTION,
-    errors
+    errors,
   };
 }

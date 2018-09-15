@@ -79,10 +79,12 @@ export const submitStory = (content, recaptcha, replyTo = null) => {
   };
 };
 
-export const typeText = content => ({
-  type: TYPE_TEXT_ACTION,
-  content,
-});
+export const typeText = content =>
+  // console.log('typeText',content);
+  ({
+    type: TYPE_TEXT_ACTION,
+    content,
+  });
 
 export const updateRecaptcha = content => ({
   type: UPDATE_RECAPTCHA_ACTION,

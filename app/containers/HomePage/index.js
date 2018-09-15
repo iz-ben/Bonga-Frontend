@@ -24,7 +24,7 @@ import { trackView } from 'utils/analyticsUtil';
 
 /* eslint-disable react/prefer-stateless-function */
 class HomePage extends React.PureComponent {
-  componentDidMount(){
+  componentDidMount() {
     trackView(this.props.location);
   }
   render() {
@@ -34,17 +34,17 @@ class HomePage extends React.PureComponent {
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
-              <div><img src={logo}/></div>
-              <WordPool/>
-              <h4>Talk about whatever's weighing heavily on your mind here, anonymously.</h4>
+              <div>
+                <img src={logo} />
+              </div>
+              <WordPool />
+              <h4>
+                Talk about whatever's weighing heavily on your mind here,
+                anonymously.
+              </h4>
               <br />
-              <Button
-                color="info"
-                size="lg"
-                to="/share"
-                component={Link}
-              >
-                <i className="fas fa-play" />Start Here
+              <Button color="info" size="lg" to="/share" component={Link}>
+                Start Here
               </Button>
             </GridItem>
           </GridContainer>
