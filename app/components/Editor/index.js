@@ -10,6 +10,8 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { stateToHTML } from 'draft-js-export-html';
+
 import editorStyle from 'assets/jss/views/editorStyle';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
@@ -38,10 +40,12 @@ import { RECAPTCHA_KEY } from 'utils/constants';
 /* eslint-disable react/prefer-stateless-function */
 class Editor extends React.Component {
   handleSubmitComment = () => {
-    const { editorContent, recaptcha, replyTo } = this.props;
+    const { recaptcha, replyTo } = this.props;
+    const { editor } = this.props.editorContent;
     const inReplyTo = replyTo || null;
     const submitAction = replyTo ? submitReply : submitStory;
-    this.props.dispatch(submitAction(editorContent, recaptcha, inReplyTo));
+    const content = stateToHTML(editor.getCurrentContent());
+    this.props.dispatch(submitAction(content, recaptcha, inReplyTo));
   };
 
   handleRecaptchaChange = captchaKey => {
@@ -57,6 +61,11 @@ class Editor extends React.Component {
 
   render() {
     const { classes, editorContent, recaptcha, replyTo } = this.props;
+    const hasText =
+      editorContent &&
+      editorContent.editor &&
+      editorContent.editor.getCurrentContent &&
+      editorContent.editor.getCurrentContent().hasText();
     return (
       <div className="editor">
         <Card classes={{ card: classes.card }}>
@@ -78,7 +87,7 @@ class Editor extends React.Component {
                 </GridItem>
                 <GridItem sm={6}>
                   <Button
-                    disabled={!editorContent.length || !recaptcha}
+                    disabled={!hasText || !recaptcha}
                     onClick={this.handleSubmitComment}
                   >
                     {replyTo ? `Reply` : `Bonga`}
@@ -98,7 +107,7 @@ class Editor extends React.Component {
 
 Editor.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  editorContent: PropTypes.string,
+  editorContent: PropTypes.object,
   recaptcha: PropTypes.string,
   // editorActive: PropTypes.bool,
   replyTo: PropTypes.string,

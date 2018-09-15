@@ -19,7 +19,7 @@ export const initialState = fromJS({
   editorOpen: false,
   sorting: 'ASC',
   xhrActive: false,
-  editorContent: '',
+  editorContent: {},
   recaptcha: null,
 });
 
@@ -33,12 +33,12 @@ function storyReducer(state = initialState, action) {
       return state
         .set('story', action.story)
         .set('replies', action.story.replies)
-        .set('editorContent', '')
+        .set('editorContent', {})
         .set('editorOpen', false);
     case UPDATE_NETWORK_ACTIVITY_ACTION:
       return state.set('xhrActive', action.active);
     case TYPE_TEXT_ACTION:
-      return state.set('editorContent', action.content);
+      return state.set('editorContent', { editor: action.content });
     case UPDATE_RECAPTCHA_ACTION:
       return state.set('recaptcha', action.content);
 
