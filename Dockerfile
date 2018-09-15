@@ -6,9 +6,13 @@ WORKDIR /app
 COPY . /app
 # Run npm install
 RUN npm install; exit 0
+#install cross-env
+RUN npm i -g cross-env
+#build dll
+RUN npm run build:dll; exit 0
 #build production
 RUN npm run build; exit 0
 # Start the app.
-CMD npm run start:prod
+CMD cross-env NODE_ENV=${NODE_ENV} node server
 # Expose the port of the app thats running in the container.
 EXPOSE 3000
