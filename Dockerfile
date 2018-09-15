@@ -12,6 +12,8 @@ RUN npm i -g cross-env
 RUN npm run build:dll; exit 0
 #build production
 RUN npm run build; exit 0
+#default env build
+ENV NODE_ENV=production
 # Start the app.
 CMD cross-env NODE_ENV=${NODE_ENV} node server
 # Expose the port of the app thats running in the container.
