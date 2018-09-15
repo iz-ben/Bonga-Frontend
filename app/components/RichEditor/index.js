@@ -43,6 +43,10 @@ class RichEditor extends React.Component {
           editorState={editorState}
           onEditorStateChange={this.handleTypeText}
           toolbar={toolbar}
+          hashtag={{
+            separator: ' ',
+            trigger: '#',
+          }}
         />
       </div>
     );
