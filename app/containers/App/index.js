@@ -13,7 +13,6 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ReactGA from 'react-ga';
 
 import About from 'containers/About/Loadable';
 import Share from 'containers/Share/Loadable';
@@ -30,6 +29,9 @@ import { initAnalytics } from 'utils/analyticsUtil';
 class App extends React.Component {
   componentDidMount() {
     initAnalytics();
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+    }
   }
   render() {
     return (
