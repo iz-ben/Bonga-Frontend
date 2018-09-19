@@ -49,6 +49,12 @@ class Footer extends React.Component {
                   Register
                 </Link>
               </ListItem>
+              <ListItem className={classes.inlineBlock}>|</ListItem>
+              <ListItem className={classes.inlineBlock}>
+                <a href="http://www.amka.life" target='_blank' className={classes.block}>
+                  Amka
+                </a>
+              </ListItem>
             </List>
           </div>
           <div className={(classes.right, classes.copyright)}>
