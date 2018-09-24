@@ -17,7 +17,7 @@ const footerStyle = {
     display: 'block',
   },
   right: {
-    padding: '15px 0',
+    // padding: '15px 0',
     margin: '0',
     float: 'right!important',
   },
@@ -28,13 +28,13 @@ const footerStyle = {
     zIndex: '2',
     position: 'relative',
     backgroundColor: '#f5f5f5',
-    '& > a':{
-      color:'#ccc'
-    }
+    '& > a': {
+      color: '#ccc',
+    },
   },
-  copyright:{
+  copyright: {
     fontSize: '14px',
-    padding: '0.9375rem',
+    // padding: '0.9375rem',
   },
   a: {
     color: '#42c7f4',
@@ -46,10 +46,10 @@ const footerStyle = {
       color: '#FFFFFF',
     },
   },
-  container:{
+  container: {
     ...container,
-    //display:'flex',
-    justifyContent: 'space-between'
+    // display:'flex',
+    justifyContent: 'space-between',
   },
   list: {
     marginBottom: '0',
