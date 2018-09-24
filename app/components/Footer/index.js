@@ -66,7 +66,8 @@ class Footer extends React.Component {
                   target="_blank"
                   className={classes.block}
                 >
-                  <img src={amkaLogo} alt="Amka" style={{maxWidth:'40px'}}/>{' '} Speak to someone now!
+                  <img src={amkaLogo} alt="Amka" style={{ maxWidth: '40px' }} />{' '}
+                  Speak to someone now!
                 </a>
               </ListItem>
             </List>
