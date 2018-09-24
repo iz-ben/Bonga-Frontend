@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { List, ListItem, withStyles } from '@material-ui/core';
 import Link from 'react-router-dom/Link';
-// @material-ui/icons
-import Favorite from '@material-ui/icons/Favorite';
+
+import amkaLogo from 'assets/images/amka-logo.png';
 
 import footerStyle from 'assets/jss/components/footerStyle';
 
@@ -49,20 +49,27 @@ class Footer extends React.Component {
                   Register
                 </Link>
               </ListItem>
-              <ListItem className={classes.inlineBlock}>|</ListItem>
+            </List>
+          </div>
+          <div className={classNames(classes.right, classes.copyright)}>
+            <List className={classes.list}>
               <ListItem className={classes.inlineBlock}>
-                <a href="http://www.amka.life" target='_blank' className={classes.block}>
-                  Amka
+                &copy; {1900 + new Date().getYear()}{' '}
+                <Link to="/" className={aClasses}>
+                  Bonga
+                </Link>{' '}
+                is a Capital Group Initiative
+              </ListItem>
+              <ListItem className={classes.inlineBlock}>
+                <a
+                  href="http://www.amka.life"
+                  target="_blank"
+                  className={classes.block}
+                >
+                  <img src={amkaLogo} alt="Amka" style={{maxWidth:'40px'}}/>{' '} Speak to someone now!
                 </a>
               </ListItem>
             </List>
-          </div>
-          <div className={(classes.right, classes.copyright)}>
-            &copy; {1900 + new Date().getYear()}{' '}
-            <Link to="/" className={aClasses}>
-              Bonga
-            </Link>{' '}
-            is a Capital Group Initiative
           </div>
         </div>
       </footer>
