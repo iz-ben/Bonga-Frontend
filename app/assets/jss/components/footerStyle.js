@@ -17,7 +17,7 @@ const footerStyle = {
     display: 'block',
   },
   right: {
-    padding: '15px 0',
+    //padding: '15px 0',
     margin: '0',
     float: 'right!important',
   },
@@ -34,7 +34,7 @@ const footerStyle = {
   },
   copyright:{
     fontSize: '14px',
-    padding: '0.9375rem',
+    // padding: '0.9375rem',
   },
   a: {
     color: '#42c7f4',
@@ -48,7 +48,7 @@ const footerStyle = {
   },
   container:{
     ...container,
-    //display:'flex',
+    // display:'flex',
     justifyContent: 'space-between'
   },
   list: {
