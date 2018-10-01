@@ -1,11 +1,4 @@
-import {
-  primaryColor,
-  warningColor,
-  dangerColor,
-  successColor,
-  infoColor,
-  roseColor,
-} from 'assets/jss/material-kit-react';
+import { infoColor, roseColor } from 'assets/jss/material-kit-react';
 const pictureUploadStyle = {
   uploaderWrapper: {
     height: 0,

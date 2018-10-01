@@ -1,4 +1,10 @@
-
 import buildUrl from 'build-url';
 
-export const buildApiUrl = (base, options={})=>buildUrl(base, {queryParams:options})
+/**
+ * Generate relevant api url
+ * @param base
+ * @param options
+ * @returns {*}
+ */
+export const buildApiUrl = (base, options = {}) =>
+  buildUrl(base, { queryParams: options });

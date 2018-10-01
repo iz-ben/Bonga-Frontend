@@ -5,6 +5,8 @@
  */
 
 import { fromJS } from 'immutable';
+import { removeDuplicates } from 'utils/arrayUtil';
+import { animateScroll as scroll } from 'react-scroll';
 import {
   CLOSE_EDITOR_ACTION,
   DEFAULT_ACTION,
@@ -14,8 +16,6 @@ import {
   UPDATE_NETWORK_ACTIVITY_ACTION,
   UPDATE_RECAPTCHA_ACTION,
 } from './constants';
-import { removeDuplicates } from 'utils/arrayUtil';
-import { animateScroll as scroll } from 'react-scroll';
 
 export const initialState = fromJS({
   stories: [],
@@ -33,8 +33,7 @@ export const initialState = fromJS({
 });
 
 function shareReducer(state = initialState, action) {
-  const stories = state.toJS().stories;
-  const visibleItems = state.toJS().visibleItems;
+  const { stories, visibleItems } = state.toJS();
 
   switch (action.type) {
     case DEFAULT_ACTION:

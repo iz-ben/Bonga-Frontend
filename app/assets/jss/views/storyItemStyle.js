@@ -1,4 +1,3 @@
-import { container, title } from 'assets/jss/material-kit-react';
 import cardStyle from 'assets/jss/components/cardStyle';
 
 const storyItemStyle = theme => ({

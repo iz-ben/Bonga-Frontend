@@ -61,7 +61,6 @@ export function contactFormSentSuccessFully(message) {
 export function removeMessage() {
   return {
     type: CONTACT_FORM_REMOVE_MESSAGE_ACTION,
-    message,
   };
 }
 

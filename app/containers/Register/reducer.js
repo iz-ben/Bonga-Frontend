@@ -24,12 +24,12 @@ export const initialState = fromJS({
     phone: false,
     profession: false,
   },
-  message:null,
-  messageType:null
+  message: null,
+  messageType: null,
 });
 
 function registerReducer(state = initialState, action) {
-  const validation = state.toJS().validation;
+  const { validation } = state.toJS();
   switch (action.type) {
     case UPDATE_FIELD_ACTION:
       return state.set(action.name, action.value);
@@ -40,23 +40,23 @@ function registerReducer(state = initialState, action) {
       });
     case REGISTRATION_SUCCESSFUL_ACTION:
       return state
-        .set('name','')
-        .set('email','')
-        .set('phone','')
-        .set('profession','')
-        .set('avatar','')
-        .set('validation',{
+        .set('name', '')
+        .set('email', '')
+        .set('phone', '')
+        .set('profession', '')
+        .set('avatar', '')
+        .set('validation', {
           name: false,
           email: false,
           phone: false,
           profession: false,
         })
-        .set('message',action.message.message)
-        .set('messageType',action.message.type);
+        .set('message', action.message.message)
+        .set('messageType', action.message.type);
     case REGISTRATION_MESSAGE_ACTION:
       return state
-        .set('message',action.message.message)
-        .set('messageType',action.message.type);
+        .set('message', action.message.message)
+        .set('messageType', action.message.type);
     default:
       return state;
   }

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /**
  *
  * StoryItem
@@ -29,7 +30,7 @@ class StoryItem extends React.Component {
     const singleView = this.props.singleView || false;
     const isReply = this.props.isReply || false;
 
-    const repliesCount = function() {
+    const repliesCount = () => {
       if (isReply) return null;
       return !singleView ? (
         <Link to={`/${slug}`}>{replies_count} replies.</Link>
@@ -43,7 +44,11 @@ class StoryItem extends React.Component {
       <Card classes={{ card: classes.card }}>
         <CardBody>
           <div className={classes.storyContent}>
-            { Parser( twitter.autoLinkHashtags(this.props.content, {hashtagUrlBase:getHashtagBase()}))}
+            {Parser(
+              twitter.autoLinkHashtags(this.props.content, {
+                hashtagUrlBase: getHashtagBase(),
+              }),
+            )}
           </div>
         </CardBody>
         <CardFooter classes={{ cardFooter: classes.cardFooter }}>
@@ -55,9 +60,11 @@ class StoryItem extends React.Component {
             >
               <GridItem xs={6}>
                 <div className={classes.footerRight}>
-                  <span>{replies}{' '} </span>&nbsp;
+                  <span>{replies} </span>&nbsp;
                   <Schedule classes={{ root: classes.icon }} />&nbsp;
-                  <span className={classes.publishedDate}>Published&nbsp; </span>
+                  <span className={classes.publishedDate}>
+                    Published&nbsp;{' '}
+                  </span>
                   <TimeAgo date={this.props.posted} />
                 </div>
               </GridItem>

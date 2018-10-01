@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /*
  * HomePage
  *
@@ -11,6 +12,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -28,14 +30,14 @@ class HomePage extends React.PureComponent {
     trackView(this.props.location);
   }
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <div>
-                <img src={logo} />
+                <img src={logo} alt="Bonga Logo" />
               </div>
               <WordPool />
               <h4>
@@ -53,5 +55,10 @@ class HomePage extends React.PureComponent {
     );
   }
 }
+
+HomePage.propTypes = {
+  location: PropTypes.string,
+  classes: PropTypes.object,
+};
 
 export default withStyles(homePageStyle)(HomePage);

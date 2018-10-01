@@ -35,18 +35,16 @@ export function submitRegistrationForm(data) {
   };
 }
 
-export function registrationSubmittedSuccessfully( message )
-{
+export function registrationSubmittedSuccessfully(message) {
   return {
-    type:REGISTRATION_SUCCESSFUL_ACTION,
-    message
-  }
+    type: REGISTRATION_SUCCESSFUL_ACTION,
+    message,
+  };
 }
 
-export function setRegistrationMessage( message )
-{
+export function setRegistrationMessage(message) {
   return {
-    type:REGISTRATION_MESSAGE_ACTION,
-    message
-  }
+    type: REGISTRATION_MESSAGE_ACTION,
+    message,
+  };
 }

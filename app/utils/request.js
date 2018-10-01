@@ -26,8 +26,7 @@ function checkStatus(response) {
     return response;
   }
 
-  if (response.status === 422)
-  {
+  if (response.status === 422) {
     return response.json().then(body => {
       const error = new Error(response.statusText);
       error.response = response;
@@ -35,8 +34,6 @@ function checkStatus(response) {
       throw error;
     });
   }
-
-
 
   const error = new Error(response.statusText);
   error.response = response;

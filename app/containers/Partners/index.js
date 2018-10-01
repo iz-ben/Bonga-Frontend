@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
@@ -24,7 +24,10 @@ export class Partners extends React.Component {
       <div>
         <Helmet titleTemplate="%s - Bonga">
           <title>Partners</title>
-          <meta name="description" content="Who else is involved in this initiative" />
+          <meta
+            name="description"
+            content="Who else is involved in this initiative"
+          />
         </Helmet>
       </div>
     );
@@ -32,7 +35,7 @@ export class Partners extends React.Component {
 }
 
 Partners.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -20,10 +20,10 @@ class PictureUpload extends React.Component {
     if (files && files[0]) {
       const reader = new FileReader();
 
-      reader.onload = event => {
+      reader.onload = e => {
         // console.log(event.target.result);
-        const callback = this.props.fileSelect || function() {};
-        this.props.fileSelect(event.target.result);
+        // const callback = this.props.fileSelect || function() {};
+        this.props.fileSelect(e.target.result);
       };
 
       reader.readAsDataURL(files[0]);
@@ -35,7 +35,7 @@ class PictureUpload extends React.Component {
     const preview = src || DEFAULT_AVATAR;
     return (
       <div>
-        <label style={{ display: 'block', maxWidth: '100%' }}>
+        <label htmlFor="art" style={{ display: 'block', maxWidth: '100%' }}>
           <input
             id="art"
             type="file"

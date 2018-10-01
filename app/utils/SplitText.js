@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*!
  * VERSION: 0.5.8
  * DATE: 2017-08-22

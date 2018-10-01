@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key no-nested-ternary  */
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -114,10 +116,12 @@ class CustomDropdown extends React.Component {
                       {dropdownHeader}
                     </MenuItem>
                   ) : null}
+
                   {dropdownList.map((prop, key) => {
                     if (prop.divider) {
                       return (
                         <Divider
+                          // eslint-disable-next-line react/no-array-index-key
                           key={key}
                           onClick={this.handleClose}
                           className={classes.dropdownDividerItem}
@@ -126,6 +130,7 @@ class CustomDropdown extends React.Component {
                     }
                     return (
                       <MenuItem
+                        // eslint-disable-next-line react/no-array-index-key
                         key={key}
                         onClick={this.handleClose}
                         className={dropdownItem}

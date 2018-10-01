@@ -42,7 +42,6 @@ import {
 } from './actions';
 
 export class Register extends React.Component {
-
   /**
    * Listens for changes to the input fields
    * Also handles validation as someone is typing
@@ -86,30 +85,30 @@ export class Register extends React.Component {
      */
     const validationRules = [
       {
-        field:'name',
-        validation:['required']
+        field: 'name',
+        validation: ['required'],
       },
       {
-        field:'phone',
-        validation:['required','phone']
+        field: 'phone',
+        validation: ['required', 'phone'],
       },
       {
-        field:'email',
-        validation:['required','email']
+        field: 'email',
+        validation: ['required', 'email'],
       },
       {
-        field:'profession',
-        validation:['required']
-      }
+        field: 'profession',
+        validation: ['required'],
+      },
     ];
 
     /**
      * This runs the validation
      * @type {any[]}
      */
-    const validation = validationRules.map(item=>{
-      return handleValidation(this.props[item.field],item.validation);
-    });
+    const validation = validationRules.map(item =>
+      handleValidation(this.props[item.field], item.validation),
+    );
 
     /**
      * Check if any of the fields didn't validate
@@ -117,16 +116,20 @@ export class Register extends React.Component {
      * so no action will be sent to the saga
      * Maybe the opposite is better...but you know...break a few eggs..to each their own..Rome was not built in a day
      */
-    if(validation.find(item=>item===true))
-    {
-      this.props.dispatch(setRegistrationMessage({
-        type:'warning',
-        message:'Please fill all the fields correctly'
-      }));
-      return false
+    if (validation.find(item => item === true)) {
+      this.props.dispatch(
+        setRegistrationMessage({
+          type: 'warning',
+          message: 'Please fill all the fields correctly',
+        }),
+      );
+      return false;
     }
 
-    this.props.dispatch(submitRegistrationForm({ name, phone, email, avatar, profession }));
+    this.props.dispatch(
+      submitRegistrationForm({ name, phone, email, avatar, profession }),
+    );
+    return true;
   };
 
   /**
@@ -135,42 +138,24 @@ export class Register extends React.Component {
    * @param message
    * @returns {*}
    */
-  displaySuccessMessage = (message ) =>{
-
-    if(!message)
-      return null;
+  displaySuccessMessage = message => {
+    if (!message) return null;
 
     return (
-      <SnackbarContent
-        message={
-          <span>{message}</span>
-        }
-        close
-        color='success'
-      />
-    )
-
+      <SnackbarContent message={<span>{message}</span>} close color="success" />
+    );
   };
 
-  displayErrorMessage = (message ) =>{
-
-    if(!message)
-      return null;
+  displayErrorMessage = message => {
+    if (!message) return null;
 
     return (
-      <SnackbarContent
-        message={
-          <span>{message}</span>
-        }
-        close
-        color='warning'
-      />
-    )
-
+      <SnackbarContent message={<span>{message}</span>} close color="warning" />
+    );
   };
 
   render() {
-    const { classes, avatar, validation, message, messageType, ...rest } = this.props;
+    const { classes, avatar, validation, message, messageType } = this.props;
     // console.log(validation);
     return (
       <div>
@@ -182,9 +167,12 @@ export class Register extends React.Component {
           <GridContainer>
             <GridItem xs={12} sm={12} md={12}>
               <h2 className={classes.title}>Register as a professional</h2>
-              { messageType ==='success' ? this.displaySuccessMessage( message ) : null}
-              { messageType !=='success' ?this.displayErrorMessage( message ):null}
-
+              {messageType === 'success'
+                ? this.displaySuccessMessage(message)
+                : null}
+              {messageType !== 'success'
+                ? this.displayErrorMessage(message)
+                : null}
             </GridItem>
             <GridItem xs={7} sm={4} md={4}>
               <PictureUpload
@@ -280,11 +268,18 @@ export class Register extends React.Component {
               <div className={classes.typo}>
                 <p>
                   {' '}
-                  Once you register successfully we shall contact you for validation purposes then email
-                  you your the login credentials
+                  Once you register successfully we shall contact you for
+                  validation purposes then email you your the login credentials
                 </p>
-                <p> The (optional) photo you provide will appear next to your name and profession on your posts, and on hover cards</p>
-                <p>The phone number and email is for communication only and will not appear in the public facing website</p>
+                <p>
+                  {' '}
+                  The (optional) photo you provide will appear next to your name
+                  and profession on your posts, and on hover cards
+                </p>
+                <p>
+                  The phone number and email is for communication only and will
+                  not appear in the public facing website
+                </p>
               </div>
             </GridItem>
           </GridContainer>
@@ -295,6 +290,7 @@ export class Register extends React.Component {
 }
 
 Register.propTypes = {
+  classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   name: PropTypes.string,
   email: PropTypes.string,
@@ -314,8 +310,8 @@ const mapStateToProps = createStructuredSelector({
   profession: makeSelectProfession(),
   avatar: makeSelectAvatar(),
   validation: makeSelectValidations(),
-  message:makeSelectMessage(),
-  messageType:makeSelectMessageType()
+  message: makeSelectMessage(),
+  messageType: makeSelectMessageType(),
 });
 
 function mapDispatchToProps(dispatch) {

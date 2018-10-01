@@ -18,35 +18,37 @@ const selectShareDomain = state => state.get('share', initialState);
 const makeSelectShare = () =>
   createSelector(selectShareDomain, substate => substate.toJS());
 
-const makeSelectStories = ()=>
-  createSelector(makeSelectShare(),  substate => substate.stories);
+const makeSelectStories = () =>
+  createSelector(makeSelectShare(), substate => substate.stories);
 
-const makeSelectVisibleItems = ()=>
-  createSelector(makeSelectShare(),  substate => substate.visibleItems);
+const makeSelectVisibleItems = () =>
+  createSelector(makeSelectShare(), substate => substate.visibleItems);
 
-const makeSelectEditorOpen = ()=>
-  createSelector(makeSelectShare(),  substate => substate.editorOpen);
+const makeSelectEditorOpen = () =>
+  createSelector(makeSelectShare(), substate => substate.editorOpen);
 
-const makeSelectPages = ()=>
-  createSelector(makeSelectShare(),  substate => substate.pages);
+const makeSelectPages = () =>
+  createSelector(makeSelectShare(), substate => substate.pages);
 
-const makeSelectNetworkActive = ()=>
-  createSelector(makeSelectShare(),  substate => substate.xhrActive);
+const makeSelectNetworkActive = () =>
+  createSelector(makeSelectShare(), substate => substate.xhrActive);
 
-const makeSelectCurrentPage = ()=>
-  createSelector(makeSelectShare(),  substate => substate.currentPage);
+const makeSelectCurrentPage = () =>
+  createSelector(makeSelectShare(), substate => substate.currentPage);
 
-const makeSelectEditorContent = ()=>
-  createSelector(makeSelectShare(),  substate => substate.editorContent);
+const makeSelectEditorContent = () =>
+  createSelector(makeSelectShare(), substate => substate.editorContent);
 
-const makeSelectRecaptcha = ()=>
-  createSelector(makeSelectShare(),  substate => substate.recaptcha);
+const makeSelectRecaptcha = () =>
+  createSelector(makeSelectShare(), substate => substate.recaptcha);
 
-const makeSelectEditorActive = ()=>
-  createSelector(makeSelectShare(),  substate => substate.editorActive);
+const makeSelectEditorActive = () =>
+  createSelector(makeSelectShare(), substate => substate.editorActive);
 
-const makeSelectComment = (id)=>
-  createSelector(makeSelectShare(),  substate => substate.stories.find(story=>story.id===id));
+const makeSelectComment = id =>
+  createSelector(makeSelectShare(), substate =>
+    substate.stories.find(story => story.id === id),
+  );
 
 export default makeSelectShare;
 export {
@@ -60,5 +62,5 @@ export {
   makeSelectCurrentPage,
   makeSelectEditorContent,
   makeSelectRecaptcha,
-  makeSelectEditorActive
+  makeSelectEditorActive,
 };

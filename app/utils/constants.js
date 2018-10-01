@@ -11,6 +11,11 @@ export const SERVER_KEY = '6Ldv6UoUAAAAAPA5yh6gyuCgIIrDNIYbItP4M7Pn';
 export const RECAPTCHA_KEY =
   process.env.NODE_ENV !== 'production' ? LOCALHOST_KEY : SERVER_KEY;
 
+/**
+ * TODO
+ * Populate this list from the database
+ * @type {string[]}
+ */
 export const SLOGANS = [
   'Bonga',
   'Ongea',
@@ -21,6 +26,10 @@ export const SLOGANS = [
   'Vent',
 ];
 
+/**
+ * Avatar silhouette
+ * @type {string}
+ */
 export const DEFAULT_AVATAR =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACah' +
   'l6sAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG2YAABzjgAA+swAAIT6AAB5gQAA/RMAADBtAAASKQ0eJk4A' +

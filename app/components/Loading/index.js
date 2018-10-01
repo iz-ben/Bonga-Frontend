@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
@@ -14,7 +15,7 @@ import WordPool from 'components/WordPool';
 /* eslint-disable react/prefer-stateless-function */
 class Loading extends React.Component {
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.container}>
         <GridContainer>
@@ -27,6 +28,8 @@ class Loading extends React.Component {
   }
 }
 
-Loading.propTypes = {};
+Loading.propTypes = {
+  classes: PropTypes.object,
+};
 
 export default withStyles(pageStyle)(Loading);

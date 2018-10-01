@@ -1,4 +1,3 @@
-import { container, title } from 'assets/jss/material-kit-react';
 import cardStyle from 'assets/jss/components/cardStyle';
 
 const editorStyle = {
@@ -19,9 +18,9 @@ const editorStyle = {
     justifyContent: 'flex-start',
     maxWidth: '100%',
     '& > div': {
-      transform:'scale(0.86)',
-      transformOrigin:'0 0'
-    }
+      transform: 'scale(0.86)',
+      transformOrigin: '0 0',
+    },
   },
 };
 

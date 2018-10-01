@@ -6,6 +6,7 @@
 
 import React from 'react';
 import Link from 'react-router-dom/Link';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -20,7 +21,7 @@ class Header extends React.Component {
     return location.pathname !== '/' ? (
       <CSSTransition timeout={500} classNames="fade">
         <Link to="/">
-          <img src={darkLogo} />
+          <img src={darkLogo} alt="Bonga" />
         </Link>
       </CSSTransition>
     ) : null;
@@ -36,7 +37,9 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = {};
+Header.propTypes = {
+  location: PropTypes.string,
+};
 
 const mapStateToProps = createStructuredSelector({
   location: makeSelectLocation(),

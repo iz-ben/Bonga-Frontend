@@ -8,22 +8,22 @@ const ANALYTICS_CONFIG = {
   trackingId: 'UA-124568679-1',
   debug: process.env.NODE_ENV !== 'production',
   gaOptions: {
-    cookieDomain: 'auto'
-  }
+    cookieDomain: 'auto',
+  },
 };
 
-export const initAnalytics = ()=>{
+export const initAnalytics = () => {
   ReactGA.initialize(ANALYTICS_CONFIG);
 };
 /**
  * TODO: Move this to higher order component
  */
-export const trackView = ( location )=>{
-  //console.log(location)
-  try{
-    const {pathname} = location;
+export const trackView = location => {
+  // console.log(location)
+  try {
+    const { pathname } = location;
     ReactGA.pageview(pathname);
-  }catch (e) {
-    console.log(e.message);
+  } catch (e) {
+    // console.log(e.message);
   }
 };

@@ -20,22 +20,33 @@ import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import StoryItem from 'components/StoryItem';
 import Editor from 'components/Editor/Loadable';
+import { makeSelectComment } from 'containers/Share/selectors';
+import { trackView } from 'utils/analyticsUtil';
 import reducer from './reducer';
 import saga from './saga';
-import { makeSelectComment } from '../Share/selectors';
 import { getStory } from './actions';
-import { makeSelectACtiveStory, makeSelectNetworkActive, makeSelectReplies } from './selectors';
-import { trackView } from 'utils/analyticsUtil';
+import {
+  makeSelectACtiveStory,
+  makeSelectNetworkActive,
+  makeSelectReplies,
+} from './selectors';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Story extends React.Component {
-  componentDidMount()
-  {
-    this.props.dispatch(getStory(this.props.match.params.id))
+  /**
+   * Get story item
+   * @param story
+   * @returns {*}
+   */
+  getStoryItem = story => (
+    <StoryItem key={story.id} singleView isReply {...story} />
+  );
+  componentDidMount() {
+    this.props.dispatch(getStory(this.props.match.params.id));
     trackView(this.props.location);
   }
   render() {
-    const { classes, story, replies, ...rest } = this.props;
+    const { classes, story, replies } = this.props;
     const title = story ? story.excerpt : 'Conversation thread';
     return (
       <div>
@@ -45,26 +56,25 @@ export class Story extends React.Component {
         </Helmet>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem  xs={12} sm={12} md={12}>
-              <div className={`story-wrapper`}>
+            <GridItem xs={12} sm={12} md={12}>
+              <div className="story-wrapper">
                 <TransitionGroup className="story">
-                  {
-                    story ? <CSSTransition
+                  {story ? (
+                    <CSSTransition
                       key={story.id}
                       timeout={500}
                       classNames="fade"
-                    ><StoryItem {...story} singleView /></CSSTransition>:null
-                  }
-
+                    >
+                      <StoryItem {...story} singleView />
+                    </CSSTransition>
+                  ) : null}
                 </TransitionGroup>
                 <div className={classes.replies}>
-                  {
-                    replies ? replies.map(reply=>(
-                      <StoryItem key={reply.id} {...reply} singleView isReply />
-                    )):null
-                  }
+                  {replies
+                    ? replies.map(reply => this.getStoryItem(reply))
+                    : null}
                 </div>
-                { story ? <Editor replyTo={story.id}/> : null}
+                {story ? <Editor replyTo={story.id} /> : null}
               </div>
             </GridItem>
           </GridContainer>
@@ -75,19 +85,23 @@ export class Story extends React.Component {
 }
 
 Story.propTypes = {
+  classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  story:PropTypes.object,
-  replies:PropTypes.array,
-  passedStory:PropTypes.object,
-  loading:PropTypes.bool
+  story: PropTypes.object,
+  replies: PropTypes.array,
+  passedStory: PropTypes.object,
+  loading: PropTypes.bool,
+  location: PropTypes.string,
+  match: PropTypes.object,
 };
 
-const mapStateToProps = (state, props) => createStructuredSelector({
-  passedStory: makeSelectComment(props.match.params.id),
-  story: makeSelectACtiveStory(),
-  replies:makeSelectReplies(),
-  loading:makeSelectNetworkActive()
-});
+const mapStateToProps = (state, props) =>
+  createStructuredSelector({
+    passedStory: makeSelectComment(props.match.params.id),
+    story: makeSelectACtiveStory(),
+    replies: makeSelectReplies(),
+    loading: makeSelectNetworkActive(),
+  });
 
 function mapDispatchToProps(dispatch) {
   return {

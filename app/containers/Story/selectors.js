@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
-import makeSelectShare from '../Share/selectors';
+// import makeSelectShare from '../Share/selectors';
 
 /**
  * Direct selector to the story state domain
@@ -19,21 +19,20 @@ const selectStoryDomain = state => state.get('story', initialState);
 const makeSelectStory = () =>
   createSelector(selectStoryDomain, substate => substate.toJS());
 
-const makeSelectACtiveStory = ()=>
+const makeSelectACtiveStory = () =>
   createSelector(makeSelectStory(), substate => substate.story);
 
-const makeSelectReplies = ()=>
+const makeSelectReplies = () =>
   createSelector(makeSelectStory(), substate => substate.replies);
 
-const makeSelectNetworkActive = ()=>
+const makeSelectNetworkActive = () =>
   createSelector(makeSelectStory(), substate => substate.xhrActive);
 
-const makeSelectReplyEditorContent = ()=>
-  createSelector(makeSelectStory(),  substate => substate.editorContent);
+const makeSelectReplyEditorContent = () =>
+  createSelector(makeSelectStory(), substate => substate.editorContent);
 
-const makeSelectReplyRecaptcha = ()=>
-  createSelector(makeSelectStory(),  substate => substate.recaptcha);
-
+const makeSelectReplyRecaptcha = () =>
+  createSelector(makeSelectStory(), substate => substate.recaptcha);
 
 export default makeSelectStory;
 export {
@@ -42,5 +41,5 @@ export {
   makeSelectReplies,
   makeSelectNetworkActive,
   makeSelectReplyRecaptcha,
-  makeSelectReplyEditorContent
+  makeSelectReplyEditorContent,
 };

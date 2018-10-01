@@ -2,15 +2,15 @@
 
 // Individual exports for testing
 import { takeLatest, call, put } from 'redux-saga/effects';
+import request from 'utils/request';
+import { API_BASE } from 'utils/constants';
 import { GET_STORY_ACTION, SUBMIT_REPLY_ACTION } from './constants';
 import {
   getStoryError,
   getStorySuccess,
   submitReplySuccessful,
+  updateNetworkActivity,
 } from './actions';
-import request from 'utils/request';
-import { API_BASE } from 'utils/constants';
-import { updateNetworkActivity } from './actions';
 
 export function* fetchStory({ id }) {
   // console.log(id);
@@ -38,7 +38,7 @@ export function* fetchStory({ id }) {
 }
 
 export function* sendReply({ content, recaptcha, replyTo }) {
-  console.log(content, recaptcha, replyTo);
+  // console.log(content, recaptcha, replyTo);
   const headers = {
     method: 'POST',
     headers: {
@@ -58,7 +58,7 @@ export function* sendReply({ content, recaptcha, replyTo }) {
     yield put(submitReplySuccessful(req.data));
     // console.log(req);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

@@ -43,16 +43,14 @@ class Share extends React.Component {
   handlePaginationChange = ({ selected }) => {
     // console.log(selected);
     const page = selected + 1;
-    const {tag} = this.props.match.params;
+    const { tag } = this.props.match.params;
     this.props.dispatch(getComments(page, tag));
   };
 
-  componentWillReceiveProps(nextProps)
-  {
-    if(nextProps.match.params.tag !== this.props.match.params.tag)
-    {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.tag !== this.props.match.params.tag) {
       const currentPage = this.props.current || 0;
-      const {tag} = nextProps.match.params;
+      const { tag } = nextProps.match.params;
       this.props.dispatch(getComments(currentPage, tag));
       trackView(this.props.location);
     }
@@ -61,7 +59,7 @@ class Share extends React.Component {
 
   componentDidMount() {
     const currentPage = this.props.current || 0;
-    const {tag} = this.props.match.params;
+    const { tag } = this.props.match.params;
     this.props.dispatch(getComments(currentPage, tag));
     trackView(this.props.location);
   }
@@ -127,6 +125,7 @@ Share.propTypes = {
   current: PropTypes.number,
   location: PropTypes.object,
   classes: PropTypes.object,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

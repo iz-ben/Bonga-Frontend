@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 import React from 'react';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
@@ -58,7 +59,6 @@ class Parallax extends React.Component {
           backgroundImage: `url(${image})`,
           ...this.state,
         }}
-        ref="parallax"
       >
         {children}
       </div>
@@ -73,6 +73,7 @@ Parallax.propTypes = {
   children: PropTypes.node,
   style: PropTypes.string,
   image: PropTypes.string,
+  small: PropTypes.string,
 };
 
 export default withStyles(parallaxStyle)(Parallax);

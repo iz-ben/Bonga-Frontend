@@ -23,6 +23,20 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
+import Button from 'components/CustomButtons/Button';
+import CustomInput from 'components/CustomInput/CustomInput';
+import Warning from 'components/Typography/Warning';
+import SnackbarContent from 'components/Snackbar/SnackbarContent';
+import pageStyle from 'assets/jss/views/pageStyle';
+import { trackView } from 'utils/analyticsUtil';
+import {
+  displayModal,
+  hideModal,
+  submitContactForm,
+  updateField,
+} from './actions';
 import makeSelectAbout, {
   makeSelectComment,
   makeSelectDialogState,
@@ -34,20 +48,6 @@ import makeSelectAbout, {
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import GridContainer from 'components/Grid/GridContainer';
-import GridItem from 'components/Grid/GridItem';
-import Button from 'components/CustomButtons/Button';
-import CustomInput from 'components/CustomInput/CustomInput';
-import Warning from 'components/Typography/Warning';
-import SnackbarContent from 'components/Snackbar/SnackbarContent';
-import pageStyle from 'assets/jss/views/pageStyle';
-import {
-  displayModal,
-  hideModal,
-  submitContactForm,
-  updateField,
-} from './actions';
-import { trackView } from 'utils/analyticsUtil';
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -90,16 +90,24 @@ class About extends React.Component {
             <GridItem xs={12} sm={12} md={8}>
               <h2 className={classes.title}>Bonga</h2>
               <p>
-                Bonga is an initiative to get people to open up and be more honest about
-                their mental well-being. This is a safe space where you can
-                share your feelings anonymously without fear of judgement, and
-                empathize with others going through stress and mental conditions
-                like depression, anxiety disorder and bipolar disorder.
+                Bonga is an initiative to get people to open up and be more
+                honest about their mental well-being. This is a safe space where
+                you can share your feelings anonymously without fear of
+                judgement, and empathize with others going through stress and
+                mental conditions like depression, anxiety disorder and bipolar
+                disorder.
               </p>
-              <p>This is not a final solution, and when possible please seek <b>professional</b> counselling.</p>
-              <p>We are working with our partners, volunteers and professionals to provide a way to have them respond directly to comments posted on Bonga.</p>
+              <p>
+                This is not a final solution, and when possible please seek{' '}
+                <b>professional</b> counselling.
+              </p>
+              <p>
+                We are working with our partners, volunteers and professionals
+                to provide a way to have them respond directly to comments
+                posted on Bonga.
+              </p>
               <br />
-              <Button component={Link} color="info" size="sm" to='/register'>
+              <Button component={Link} color="info" size="sm" to="/register">
                 Register to offer help
               </Button>
             </GridItem>
@@ -225,6 +233,15 @@ class About extends React.Component {
 
 About.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  phone: PropTypes.string,
+  email: PropTypes.string,
+  comment: PropTypes.string,
+  location: PropTypes.string,
+  message: PropTypes.string,
+  modal: PropTypes.string,
+  classes: PropTypes.object,
+  errors: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

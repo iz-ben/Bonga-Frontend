@@ -45,6 +45,7 @@ module.exports = {
     'jsx-a11y/mouse-events-have-key-events': 2,
     'jsx-a11y/role-has-required-aria-props': 2,
     'jsx-a11y/role-supports-aria-props': 2,
+    'linebreak-style': 0,
     'max-len': 0,
     'newline-per-chained-call': 0,
     'no-confusing-arrow': 0,
@@ -63,6 +64,15 @@ module.exports = {
     'redux-saga/no-yield-in-race': 2,
     'redux-saga/yield-effects': 2,
     'require-yield': 0,
+    'react/no-did-update-set-state': 0,
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight', 'to'],
+        aspects: ['noHref', 'invalidHref', 'preferButton'],
+      },
+    ],
   },
   settings: {
     'import/resolver': {

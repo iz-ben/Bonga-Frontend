@@ -54,9 +54,9 @@ const registerStyle = {
     fontWeight: '300',
     fontFamily: 'Roboto',
     padding: '10px 0',
-    '& p':{
-      fontSize:'12px'
-    }
+    '& p': {
+      fontSize: '12px',
+    },
   },
 };
 

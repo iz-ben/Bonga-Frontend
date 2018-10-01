@@ -2,9 +2,9 @@
 
 // Individual exports for testing
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { GET_COMMENTS_ACTION, SUBMIT_STORY_ACTION } from './constants';
 import request from 'utils/request';
 import { API_BASE } from 'utils/constants';
+import { GET_COMMENTS_ACTION, SUBMIT_STORY_ACTION } from './constants';
 import {
   commentPostedSuccessfully,
   commentsFetchedError,
@@ -61,7 +61,7 @@ export function* sendStory({ content, recaptcha, replyTo }) {
     yield put(commentPostedSuccessfully(req.data));
     // console.log(req);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 
