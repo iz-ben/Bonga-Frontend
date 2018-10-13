@@ -1,4 +1,3 @@
-import { container, title } from 'assets/jss/material-kit-react';
 import cardStyle from 'assets/jss/components/cardStyle';
 
 const storyItemStyle = theme => ({
@@ -50,6 +49,7 @@ const storyItemStyle = theme => ({
     fontSize: '14px',
   },
   storyContent: {
+    display: 'flex',
     fontSize: '16px',
     color: '#313131',
     '& p': {
@@ -60,6 +60,26 @@ const storyItemStyle = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none!important',
     },
+  },
+  avatar: {
+    width: '80px',
+    height: '80px',
+  },
+  avatarHolder: {
+    paddingRight: '10px',
+  },
+  details: {
+    flexGrow: 1,
+  },
+  profileName: {
+    fontWeight: 'bold',
+    fontSize: '14px',
+    marginTop: '0',
+  },
+  profession: {
+    color: '#a5a5a5',
+    fontWeight: 'normal',
+    fontSize: '12px',
   },
 });
 
