@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Parser from 'html-react-parser';
 import Schedule from '@material-ui/icons/Schedule';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import TimeAgo from 'react-timeago';
 import { Link } from 'react-router-dom';
 import twitter from 'twitter-text';
@@ -56,7 +57,18 @@ class StoryItem extends React.Component {
           ) : null}
           <div className={classes.details}>
             <h3 className={classes.profileName}>
-              {profile ? profile.name : null} <span className={classes.profession}>{profile ? profile.profession : null}</span>
+              {profile ? profile.name : null}{' '}
+              {profile && profile.verified ? (
+                <span
+                  style={{ fontSize: '16px', color: '#41c7f4' }}
+                  title="Verified"
+                >
+                  <VerifiedUser color="inherit" fontSize="inherit" />
+                </span>
+              ) : null}
+              <span className={classes.profession}>
+                {profile ? profile.profession : null}
+              </span>
             </h3>
             {Parser(
               twitter.autoLinkHashtags(this.props.content, {
