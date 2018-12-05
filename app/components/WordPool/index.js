@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import {TimelineLite, TweenMax, Back, Power2, SlowMo} from 'gsap';
+import { TimelineLite, TweenMax, Back, Power2, SlowMo } from 'gsap';
 import withStyles from '@material-ui/core/styles/withStyles';
 import wordPoolStyle from 'assets/jss/views/wordPoolStyle';
 import { SLOGANS } from 'utils/constants';
